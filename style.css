@@ -265,7 +265,28 @@
     text-align: center;
     max-width: 90%;
   }
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;  /* Cambia a columna si es necesario */
+      height: auto;            /* Ajusta la altura al contenido */
+    }
   
+    .hero-left {
+      display: none;           /* Oculta el hero-left */
+    }
+  
+    .hero-right {
+      flex: 1 0 100%;          /* Ocupa todo el ancho */
+      height: auto;            /* Ajusta la altura al tamaño de la imagen */
+    }
+  
+    .slider,
+    .slide img {
+      width: 100%;
+      height: auto;            /* Mantiene proporción */
+      object-fit: contain;     /* La imagen no se recorta */
+    }
+  }
 
   
   /* BOTÓN DONAR EN HERO */
