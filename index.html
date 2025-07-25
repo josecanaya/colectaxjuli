@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campaña Solidaria - [Nombre del Niño]</title>
+   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" /> 
+</head>
+<body class="fade-in">
+
+    <div id="intro-overlay">
+        <div class="intro-content">
+          <div id="intro-lines"></div>
+          <button id="intro-btn"><img src="imagen/logo.png" alt="Logo"></button>
+        </div>
+      </div>
+  <!-- NAV -->
+  <header class="navbar">
+    
+    <nav>
+      <ul>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#estudio">Estudio</a></li>
+        <li><a href="#donar">Donar</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+ <!-- HERO-->
+ <header class="hero">
+    <div class="hero-left">
+      <img src="imagen/logo.png" alt="Logo Julio" class="hero-logo">
+    </div>
+    <div class="hero-right">
+      <div class="slider">
+        <div class="slide active" data-text="">
+          <img src="imagen/foto1.jpg" alt="Foto del niño 1">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto2.jpg" alt="Foto del niño 2">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto3.jpg" alt="Foto del niño 3">
+        </div>
+        <div class="overlay-text" id="slider-text"></div>
+      </div>
+      <div class="hero-btn-container">
+        <button onclick="location.href='#donar'" class="btn-donar-hero">¡Donar ahora!</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor">
+ <!-- HISTORIA -->
+<section id="historia" class="section">
+    <h2>Mi Historia</h2>
+  <p>
+    ¡Hola! Soy <b>Juli</b>, tengo 10 años y vivo en Rosario con mi papá <b>José</b>, mi mamá <b>Yanina</b>, mi hermanito <b>Renzo</b>, mi perrita <b>Tuna</b> y mis dos gatitos <b>Víctor</b> y <b>Mimo</b>.  
+    Soy <b>canaya de nacimiento</b>  y me encanta la música y el arte.  
+    Amo tocar el piano, sobre todo canciones de <b>Mozart</b> y <b>Tchaikovsky</b>, porque me hacen soñar.  
+    Además, soy parte de los <b>scouts</b> en el grupo San Jorge, un lugar donde aprendo, juego y vivo grandes aventuras con mis amigos. <b>¡Siempre mejor! ✌️</b>
+  </p>
+  <p>
+    En 2022 me dijeron que tengo 
+    <a href="https://www.nei.nih.gov/espanol/aprenda-sobre-la-salud-ocular/enfermedades-y-afecciones-de-los-ojos/retinitis-pigmentaria" target="_blank" rel="noopener noreferrer">
+      retinosis pigmentaria ligada al cromosoma X
+    </a>.  
+    Es una condicion genética, degenerativa y progresiva que hace que mi vista se deteriore poco a poco, pero yo elijo seguir mirando la vida con alegría.  
+    Mis papás siempre están a mi lado buscando lo mejor para mí.  
+    </p>
+  <p>
+    Hace poquito recibimos una gran noticia: me invitaron al 
+    <a href="https://bascompalmer.org/" target="_blank" rel="noopener noreferrer">
+      Bascom Palmer Eye Institute
+    </a> en Miami, gracias al programa de 
+    <a href="https://ocugen.com/" target="_blank" rel="noopener noreferrer">
+      Ocugen
+    </a>.  
+    Allí puedo hacerme un tratamiento muy especial que se llama <b>OCU 400</b>, que podría ayudarme a lograr que la retinitis se detenga o avance mas lento.
+  </p>
+  <p>
+    Pero este sueño es muy caro: pasajes, estadías, estudios médicos y muchas cosas más.  
+    Mis papás no pueden pagar todo solos, por eso lanzamos esta <b>campaña solidaria</b> para que entre todos podamos lograrlo.
+  </p>
+  <p>
+    Cada ayuda, por más pequeña que sea, significa un montón para mí.  
+    <b>Gracias de corazón por darme tu apoyo ❤️</b>. Con tu ayuda voy a poder seguir soñando, aprendiendo y viendo el mundo con esperanza.
+  </p>
+  </section>
+
+
+  <section id="estudio" class="section estudio">
+    <h2>Datos del Estudio / Tratamiento</h2>
+    <div class="card">
+        <a href="https://bascompalmer.org/" target="_blank" class="card-link">
+          <h3>Institución</h3>
+          <p><strong>Nombre:</strong> Bascom Palmer Eye Institute – University of Miami</p>
+          <p><strong>Programa:</strong> Ocugen – OCU400</p>
+        </a>
+      </div>
+      
+      <div class="card">
+        <a href="https://bascompalmer-doctors.umiamihealth.org/provider/audina-m-berrocal/525701" target="_blank" class="card-link">
+          <h3>Profesional a cargo</h3>
+          <p><strong>Nombre:</strong> Dra. Audina Berrocal</p>
+          <p><strong>Especialidad:</strong> Cirugía y retina pediátrica</p>
+        </a>
+      </div>
+      
+      <div class="card">
+        <a href="https://clinicaltrials.gov/study/NCT06388200" target="_blank" class="card-link">
+          <h3>Diagnóstico y Tratamiento</h3>
+          <p><strong>Diagnóstico:</strong> Retinosis pigmentaria ligada al cromosoma X</p>
+          <p><strong>Tratamiento:</strong> OCU400 (Fase 3)</p>
+          <p><strong>Objetivo:</strong> Detener el avance de la retinosis</p>
+        </a>
+      </div>
+  </a>
+      <!-- Fechas -->
+      <div class="card">
+        <h3>Fechas</h3>
+        <p><strong>Controles:</strong> 11 controles</p>
+        <p><strong>Estadía:</strong> 15 meses</p>
+        <p><strong>Viajes:</strong> Múltiples traslados</p>
+      </div>
+  
+      <!-- Costos -->
+      <div class="card">
+        <h3>Costos Estimados</h3>
+        <p><strong>Total:</strong> USD 50.000</p>
+        <p>Incluye viajes, estadías, traslados y atención hospitalaria.</p>
+      </div>
+  
+
+  
+    <!-- Documentación -->
+    <div class="doc-box">
+      <p>Contamos con la documentación médica y presupuestos disponibles para quien lo requiera.</p>
+      <a href="#" class="btn-doc">Ver documentación médica</a>
+    </div>
+  
+  
+    <section id="donar" class="section">
+      <h2>Cómo Donar</h2>
+
+      <!-- PROGRESO -->
+      <section id="donar" class="donar-section">
+        <h2>¡Colaborá con Julio!</h2>
+        <div class="donar-buttons">
+          <a href="https://mpago.la/1vH1v9W" class="btn-donar">$1.000</a>
+          <a href="https://mpago.la/1m37pvz" class="btn-donar">$2.000</a>
+          <a href="https://mpago.la/18Yvum9" class="btn-donar">$5.000</a>
+          <a href="https://mpago.la/2QcwZCd" class="btn-donar">$10.000</a>
+          <a href="https://link.mercadopago.com.ar/colectaxjuli" class="btn-donar btn-open">Otro monto</a>
+        </div>
+      </section>
+      <div class="progreso-wrap">
+        <p class="meta-texto">
+          Meta: $50.000.000 — Recaudado: <span id="recaudado">$0</span>
+        </p>
+        <div class="progreso">
+          <div class="barra" id="barra"></div>
+        </div>
+      </div>
+
+      <div class="métodos">
+        <div class="card">
+          <h3>Mercado Pago</h3>
+          <p><strong>Alias:</strong> rodrigocontrera.mp</p>
+          <p><strong>Titular:</strong> José Rodrigo Contrera</p>
+        </div>
+
+        <div class="card">
+          <h3>Transferencia Bancaria</h3>
+          <p><strong>Alias:</strong> finca.foco.aldea</p>
+          <p><strong>Titular:</strong> Yanina Viviana Ciani</p>
+        </div>
+
+        <div class="card">
+          <h3>PayPal</h3>
+          <p><a href="#" target="_blank" rel="noopener noreferrer">[Tu enlace de PayPal]</a></p>
+        </div>
+      </div>
+
+      
+    </section>
+  </main>
+
+    <div class="bottom-bar-vertical" id="bottom-bar">
+        <a href="tel:+543410000000" class="bottom-item" aria-label="Teléfono mamá">
+          <img src="imagen/whatsapp.png" alt="Teléfono mamá" class="bottom-icon">
+          <span class="tooltip">Teléfono Mamá</span>
+        </a>
+      
+        <a href="tel:+543410000001" class="bottom-item" aria-label="Teléfono papá">
+          <img src="imagen/whatsapp.png" alt="Teléfono papá" class="bottom-icon">
+          <span class="tooltip">Teléfono Papá</span>
+        </a>
+      
+        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" class="bottom-item" aria-label="Instagram">
+          <img src="imagen/instagram.png" alt="Instagram" class="bottom-icon">
+          <span class="tooltip">Instagram</span>
+        </a>
+      </div>
+    
+  
+      <footer class="footer" id="contacto">
+        <div class="footer-content" style="flex-direction: column; align-items: center; gap: 10px;">
+          <div class="contact-item">
+            Teléfono de mamá: 
+            <a href="https://wa.me/5493415846100" target="_blank" rel="noopener noreferrer">+54 9 3415 84-6100</a>
+          </div>
+          <div class="contact-item">
+            Teléfono de papá: 
+            <a href="https://wa.me/5493413189944" target="_blank" rel="noopener noreferrer">+54 9 3413 18-9944</a>
+          </div>
+          <p style="margin-top: 20px; font-weight: bold; text-align: center;">
+            Gracias por tu ayuda ❤️ Cada aporte suma.
+          </p>
+        </div>
+      </footer>
+  
+
+<script src="script.js" ></script>
+</html>
