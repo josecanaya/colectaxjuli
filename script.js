@@ -39,30 +39,34 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(cambiarSlide, 4000);
   }
 
-  /* ============================
-     INTRO
-  ============================ */
   const frases = [
     "When the night has come...",
     "And the land is dark...",
+    "And the Moon is the only light we'll see..",
     "No, I won't be afraid...",
-    "Just as long as you stand, stand by me"
+    "Just as long as you stand"
   ];
-
+  
+  // Última frase como variable aparte
+  const ultimaFrase = "Stand by me.";
+  
   const introOverlay = document.getElementById("intro-overlay");
   const introLines = document.getElementById("intro-lines");
   const introBtn = document.getElementById("intro-btn");
-
-  if (introOverlay && introLines && introBtn) {
+  const luna = document.getElementById("luna");
+  const ojo = document.getElementById("logo-ojo");
+  
+  if (introOverlay && introLines && introBtn && luna && ojo) {
     const delayEntreFrases = 800;
     const delayEntreLetras = 50;
     let fraseIndex = 0;
-
-    const escribirFrase = (frase, onDone) => {
+  
+    // Función para escribir una frase
+    const escribirFrase = (frase, onDone, extraClass = "") => {
       const p = document.createElement("p");
-      p.className = "line";
+      p.className = `line ${extraClass}`.trim();
       introLines.appendChild(p);
-
+  
       [...frase].forEach((letra, i) => {
         const span = document.createElement("span");
         span.className = "char";
@@ -70,29 +74,75 @@ document.addEventListener("DOMContentLoaded", () => {
         p.appendChild(span);
         setTimeout(() => span.classList.add("show"), i * delayEntreLetras);
       });
-
+  
       setTimeout(onDone, frase.length * delayEntreLetras + 50);
     };
-
+  
+    // Mostrar frases secuencialmente
     const mostrarFrasesSecuencialmente = () => {
-      if (fraseIndex >= frases.length) return;
+      if (fraseIndex >= frases.length) {
+        // Mostrar la última frase en grande
+        setTimeout(() => {
+          introLines.innerHTML = ""; // Eliminar todas las anteriores
+          escribirFrase(ultimaFrase, () => {}, "final");
+          setTimeout(() => {
+            const finalLine = introLines.querySelector(".final");
+            if (finalLine) finalLine.classList.add("big");
+          }, 300);
+        }, 500);
+        return;
+      }
+  
       escribirFrase(frases[fraseIndex], () => {
         fraseIndex++;
         setTimeout(mostrarFrasesSecuencialmente, delayEntreFrases);
       });
     };
-
+  
     mostrarFrasesSecuencialmente();
-
-    introBtn.addEventListener("click", () => {
+  
+    const cerrarOverlay = () => {
       introOverlay.classList.add("hide");
       document.body.classList.add("fade-in");
       setTimeout(() => document.body.classList.add("show"), 50);
       document.documentElement.style.setProperty("--bg", "#f5fff7");
       document.documentElement.style.setProperty("--text", "#2e2e2e");
+    };
+  
+    introBtn.addEventListener("click", cerrarOverlay);
+  
+    // Entrar con Enter
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") cerrarOverlay();
     });
+  
+    // Luna aparece después de 5 segundos
+    setTimeout(() => luna.classList.add("show"), 5000);
+  
+    // Luna desaparece y aparece ojo en la misma posición al segundo 12
+    setTimeout(() => {
+      luna.classList.remove("show");
+      ojo.classList.add("show");
+  
+      // Desaparecer el ojo después de abrirse
+      setTimeout(() => ojo.classList.remove("show"), 2000);
+    }, 13000);
+  
+    // Fondo blanco al segundo 12.5
+    setTimeout(() => {
+      introOverlay.classList.add("fade-white");
+    }, 13500);
+  
+    // **Ocultar última frase antes de que aparezca el botón**
+    setTimeout(() => {
+      const finalLine = introLines.querySelector(".final");
+      if (finalLine) finalLine.style.opacity = 0;
+    }, 15000);
+  
+    // Botón aparece centrado al segundo 15
+    setTimeout(() => introBtn.classList.add("show"), 17000);
   }
-
+  
   /* ============================
      NAV ACTIVO SEGÚN SCROLL
   ============================ */
