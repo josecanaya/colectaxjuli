@@ -38,31 +38,23 @@ body.fade-out {
 }
 
 /* OVERLAY INTRO */
+/* Tamaño general reducido un 30% */
 #luna, #logo-ojo {
   position: absolute;
-  top: 50px;                    /* Ajusta esta posición si hace falta */
+  top: 50px;
   left: 50%;
-  transform: translateX(-50%) scale(0.56); /* 0.8 * 0.7 = 0.56 (reducción 30%) */
+  transform: translateX(-50%) scale(0.56); /* 0.8 * 0.7 = 0.56 */
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
-  max-width: 90vw;              /* No exceder el 90% del ancho viewport */
-  height: auto;
-  width: auto;
-  max-height: 70vh;             /* Evitar que ocupe demasiado alto en móviles */
-  box-sizing: border-box;
 }
 
-/* Mostrar con zoom */
 #luna.show, #logo-ojo.show {
   opacity: 1;
-  transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
+  transform: translateX(-50%) scale(0.7); /* tamaño final */
 }
 
-/* OJO */
 #logo-ojo {
-  width: 420px;                 /* 600px * 0.7 = 420px (reducción 30%) */
-  max-width: 90vw;              /* Escalable en móviles */
-  transform: translateX(-50%) scale(0) scaleY(0);
+  width: 420px; /* 600 * 0.7 */
   transform-origin: center center;
   opacity: 0;
   transition: opacity 0.5s ease, transform 1s ease;
@@ -72,8 +64,12 @@ body.fade-out {
   opacity: 1;
   animation: abrirOjo 1s forwards ease-in-out;
 }
-
-/* Animación de apertura del ojo */
+  /* Mostrar con zoom */
+  #luna.show, #logo-ojo.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
+  }
+  
 @keyframes abrirOjo {
   0% {
     transform: translateX(-50%) scale(0.7) scaleY(0);
@@ -86,41 +82,26 @@ body.fade-out {
   }
 }
 
-/* LUNA */
 #luna {
-  width: 280px;                 /* 400px * 0.7 = 280px */
-  max-width: 90vw;              /* Escalable en móviles */
+  width: 280px; /* 400 * 0.7 */
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
 }
+  /* Fondo blanco */
+  .fade-white {
+    background: #ffffff !important;
+    transition: background 1s ease;
+  }
 
-#luna.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(0.7);
-}
-
-/* Fondo blanco */
-.fade-white {
-  background: #ffffff !important;
-  transition: background 1s ease;
-}
-/* Media query para pantallas pequeñas (por ejemplo, móviles) */
+/* Media query para móviles */
 @media (max-width: 600px) {
   #luna, #logo-ojo {
-    max-width: 40vw;     /* mitad del 80vw */
-    max-height: 35vh;    /* proporcional al tamaño */
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) scale(0.35) !important; /* mitad de 0.7 */
+    width: 50vw !important;
+    max-width: 300px;
+    transform: translateX(-50%) scale(0.35) !important;
   }
   #luna.show, #logo-ojo.show {
-    transform: translateX(-50%) scale(0.35) !important; /* mitad de 0.7 */
-  }
-  #logo-ojo {
-    width: auto;
-  }
-  #luna {
-    width: auto;
+    transform: translateX(-50%) scale(0.35) !important;
   }
 }
 
