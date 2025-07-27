@@ -93,17 +93,7 @@ body.fade-out {
     transition: background 1s ease;
   }
 
-/* Media query para móviles */
-@media (max-width: 600px) {
-  #luna, #logo-ojo {
-    width: 50vw !important;
-    max-width: 300px;
-    transform: translateX(-50%) scale(0.65) !important;
-  }
-  #luna.show, #logo-ojo.show {
-    transform: translateX(-50%) scale(0.65) !important;
-  }
-}
+
 
 /* --- Estilos generales --- */
 body {
