@@ -98,10 +98,10 @@ body.fade-out {
   #luna, #logo-ojo {
     width: 50vw !important;
     max-width: 300px;
-    transform: translateX(-50%) scale(0.35) !important;
+    transform: translateX(-50%) scale(0.65) !important;
   }
   #luna.show, #logo-ojo.show {
-    transform: translateX(-50%) scale(0.35) !important;
+    transform: translateX(-50%) scale(0.65) !important;
   }
 }
 
