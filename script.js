@@ -118,12 +118,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     // Botón Skip (aparece a los 5 segundos)
+    
     if (skipBtn) {
       setTimeout(() => {
         skipBtn.classList.add("show");
       }, 5000);
-  
+    
+      // Funciona en PC
       skipBtn.addEventListener("click", cerrarOverlay);
+    
+      // Funciona en móvil (responde instantáneo)
+      skipBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        cerrarOverlay();
+      });
     }
   
     // Luna aparece después de 5 segundos
