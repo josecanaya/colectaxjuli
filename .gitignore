@@ -1,0 +1,19 @@
+# Configuration files with sensitive data
+config.js
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you add build tools later)
+node_modules/
+dist/
+build/ 

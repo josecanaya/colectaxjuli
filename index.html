@@ -6,6 +6,7 @@
   <title>Todos por Julio</title>
    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" /> 
+  <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
 </head>
 <body class="fade-in">
 
@@ -191,6 +192,18 @@
           <h3>PayPal</h3>
           <p><a href="#" target="_blank" rel="noopener noreferrer">[Tu enlace de PayPal]</a></p>
         </div>
+
+        <div class="card card-full">
+          <h3>Criptomonedas (ETH)</h3>
+          <div class="crypto-donar">
+            <button id="connect-wallet" class="btn-donar">Conectar billetera</button>
+            <div id="wallet-info" class="wallet-info" style="display:none; margin-top:10px;">
+              <p style="text-align: center;">Conectado como: <span id="wallet-address"></span></p>
+
+              <div id="token-list" class="token-list"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       
@@ -232,5 +245,6 @@
       </footer>
   
 
+<script src="config.js"></script>
 <script src="script.js" ></script>
 </html>
