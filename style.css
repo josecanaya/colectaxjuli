@@ -1,15 +1,15 @@
 :root {
   --bg: #eaf6ea;
   --text: #2e2e2e;
-  --primary: #cfeedd;        /* verde muy pálido */
+  --primary: #cfeedd; /* verde muy pálido */
   --primary-strong: #9ed2b6; /* verde suave */
-  --accent: #7cc6a4;         /* un poco más marcado para botones */
+  --accent: #7cc6a4; /* un poco más marcado para botones */
   --white: #ffffff;
-  --shadow: rgba(0,0,0,0.06);
+  --shadow: rgba(0, 0, 0, 0.06);
 }
 
 /* Importar fuente */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -21,7 +21,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: var(--bg);
   color: var(--text);
 
@@ -39,7 +39,8 @@ body.fade-out {
 
 /* OVERLAY INTRO */
 /* Tamaño general reducido un 30% */
-#luna, #logo-ojo {
+#luna,
+#logo-ojo {
   position: absolute;
   top: 50px;
   left: 50%;
@@ -48,7 +49,8 @@ body.fade-out {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-#luna.show, #logo-ojo.show {
+#luna.show,
+#logo-ojo.show {
   opacity: 1;
   transform: translateX(-50%) scale(0.7); /* tamaño final */
 }
@@ -64,12 +66,13 @@ body.fade-out {
   opacity: 1;
   animation: abrirOjo 1s forwards ease-in-out;
 }
-  /* Mostrar con zoom */
-  #luna.show, #logo-ojo.show {
-    opacity: 1;
-    transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
-  }
-  
+/* Mostrar con zoom */
+#luna.show,
+#logo-ojo.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
+}
+
 @keyframes abrirOjo {
   0% {
     transform: translateX(-50%) scale(0.7) scaleY(0);
@@ -87,22 +90,20 @@ body.fade-out {
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
 }
-  /* Fondo blanco */
-  .fade-white {
-    background: #ffffff !important;
-    transition: background 1s ease;
-  }
-
-
+/* Fondo blanco */
+.fade-white {
+  background: #ffffff !important;
+  transition: background 1s ease;
+}
 
 /* --- Estilos generales --- */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 /* --- Overlay Intro --- */
 #skip-btn {
-  position: fixed;       /* Cambié de absolute a fixed */
+  position: fixed; /* Cambié de absolute a fixed */
   top: 15px;
   right: 20px;
   background: rgba(4, 21, 253, 0.6);
@@ -112,7 +113,7 @@ body {
   padding: 6px 12px;
   cursor: pointer;
   font-size: 0.9rem;
-  z-index: 10000;        /* Más alto que el overlay */
+  z-index: 10000; /* Más alto que el overlay */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease, background 0.3s ease;
@@ -134,7 +135,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   z-index: 9999;
   transition: opacity 0.8s ease;
 }
@@ -143,7 +144,6 @@ body {
   opacity: 0;
   pointer-events: none;
 }
-
 
 .intro-content {
   max-width: 900px;
@@ -223,8 +223,8 @@ body {
   cursor: pointer;
   padding: 0;
   transition: opacity 1s ease, color 0.3s ease;
-  opacity: 0;              /* Oculto al inicio */
-  pointer-events: none;    /* No clickeable mientras está oculto */
+  opacity: 0; /* Oculto al inicio */
+  pointer-events: none; /* No clickeable mientras está oculto */
 }
 
 #intro-btn::after {
@@ -253,15 +253,17 @@ body {
 }
 /* NAV */
 .navbar {
-  position: sticky;          /* opcional: que quede fija arriba */
-  top: 0;                    /* si usás sticky */
+  position: sticky; /* opcional: que quede fija arriba */
+  top: 0; /* si usás sticky */
   z-index: 1000;
-  height: 80px;              /* más alto */
-  padding: 0 2rem;           /* más “aire” lateral */
+  height: 80px; /* más alto */
+  padding: 0 2rem; /* más “aire” lateral */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--white);  /* o var(--page-bg) si querés que sea del mismo color */
+  background: var(
+    --white
+  ); /* o var(--page-bg) si querés que sea del mismo color */
   box-shadow: 0 2px 8px var(--shadow);
 }
 
@@ -279,11 +281,11 @@ body {
 }
 
 .navbar a {
-  font-size: 1.05rem;        /* tipografía un poco más grande */
+  font-size: 1.05rem; /* tipografía un poco más grande */
   font-weight: 600;
   color: var(--text);
   text-decoration: none;
-  padding: 0.5rem 0.75rem;   /* área “cliqueable” más cómoda */
+  padding: 0.5rem 0.75rem; /* área “cliqueable” más cómoda */
   border-radius: 8px;
   transition: background 0.25s ease, color 0.25s ease;
 }
@@ -310,116 +312,118 @@ body {
 }
 /* SLIDER HERO */
 .hero {
-display: flex;
-height: 400px;
-overflow: hidden;
-background: #eaf6ea;
+  display: flex;
+  height: 400px;
+  overflow: hidden;
+  background: #eaf6ea;
 }
 
 .hero-left {
-flex: 0 0 30%;        /* 30% del ancho */
-display: flex;
-align-items: center;
-justify-content: center;
-background: #eaf6ea;  /* Fondo para resaltar logo */
-padding: 20px;
+  flex: 0 0 30%; /* 30% del ancho */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf6ea; /* Fondo para resaltar logo */
+  padding: 20px;
 }
 
 .hero-logo {
-width: 80%;
-max-width: 1200px;
-height: auto;
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
 }
 
 .hero-right {
-flex: 1;               /* 70% del ancho */
-position: relative;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-}
-
-.slider {
-position: relative;
-width: 100%;
-height: 100%;
-}
-
-.slide {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-opacity: 0;
-transition: opacity 1s ease-in-out;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.slide img {
-width: 100%;
-height: 100%;
-object-fit: contain;   /* Mantiene la imagen completa */
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.slide.active {
-opacity: 1;
-}
-
-.overlay-text {
-position: absolute;
-bottom: 20px;
-left: 50%;
-transform: translateX(-50%);
-background: rgba(0, 0, 0, 0.5);
-color: white;
-padding: 8px 16px;
-border-radius: 10px;
-font-size: 1em;
-text-align: center;
-max-width: 90%;
-}
-
-/* VERSIÓN MÓVIL */
-@media (max-width: 768px) {
-.hero {
-  flex-direction: column;
-  height: auto;
-}
-.hero-left {
-  display: none;
-}
-.hero-right {
-  flex: 1 0 100%;
-  height: auto;
-}
-.slider {
-  height: 300px; /* fijar altura para que funcionen las slides absolutas */
+  flex: 1; /* 70% del ancho */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .slide {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.slide.active {
-  opacity: 1;
-}
+
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* Mantiene la imagen completa */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 1em;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* VERSIÓN MÓVIL */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+  .hero-left {
+    display: none;
+  }
+  .hero-right {
+    flex: 1 0 100%;
+    height: auto;
+  }
+  .slider {
+    height: 300px; /* fijar altura para que funcionen las slides absolutas */
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide.active {
+    opacity: 1;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 /* BOTÓN DONAR EN HERO */
@@ -448,12 +452,12 @@ max-width: 90%;
 /* SECCIÓN HISTORIA */
 /* SECCIÓN HISTORIA */
 #historia {
-  max-width: 900px;                  /* Limita el ancho para mejorar la lectura */
-  margin: 40px auto;                 /* Centra el contenedor pero no el texto */
-  padding: clamp(16px, 4vw, 40px);   /* Espaciado interno adaptable */
-  text-align: left;                  /* Alinea el contenido a la izquierda */
-  background: var(--white);          /* Fondo blanco para destacar sobre el bg */
-  border-radius: 12px;               /* Esquinas redondeadas */
+  max-width: 900px; /* Limita el ancho para mejorar la lectura */
+  margin: 40px auto; /* Centra el contenedor pero no el texto */
+  padding: clamp(16px, 4vw, 40px); /* Espaciado interno adaptable */
+  text-align: left; /* Alinea el contenido a la izquierda */
+  background: var(--white); /* Fondo blanco para destacar sobre el bg */
+  border-radius: 12px; /* Esquinas redondeadas */
   box-shadow: 0 4px 16px var(--shadow); /* Sombra sutil */
 }
 
@@ -461,19 +465,19 @@ max-width: 90%;
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 1em;
-  color: var(--accent);  
-  text-align: center;          
+  color: var(--accent);
+  text-align: center;
 }
 
 #historia p {
-  line-height: 1.7;                  /* Espaciado entre líneas */
-  margin-bottom: 1.5em;              /* Separación entre párrafos */
-  font-size: 1.1rem;                 /* Tamaño de letra cómodo */
-  color: #333333;                    /* Texto suave */
-  max-width: 700px;                  /* Limita el ancho del texto */
-  margin-left: 10px;                 /* Margen interno izquierdo */
-  margin-right: 10px;                /* Margen interno derecho */
-  text-align: justify;               /* Texto justificado (opcional) */
+  line-height: 1.7; /* Espaciado entre líneas */
+  margin-bottom: 1.5em; /* Separación entre párrafos */
+  font-size: 1.1rem; /* Tamaño de letra cómodo */
+  color: #333333; /* Texto suave */
+  max-width: 700px; /* Limita el ancho del texto */
+  margin-left: 10px; /* Margen interno izquierdo */
+  margin-right: 10px; /* Margen interno derecho */
+  text-align: justify; /* Texto justificado (opcional) */
 }
 
 #historia a {
@@ -482,7 +486,8 @@ max-width: 90%;
   font-weight: 600;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
-  transition: color 0.3s ease, border-bottom 0.3s ease, background-color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease,
+    background-color 0.3s ease;
 }
 
 #historia a:hover {
@@ -588,11 +593,11 @@ max-width: 90%;
 /* Barra vertical inferior derecha */
 .bottom-bar-vertical {
   position: fixed;
-  right: 20px;   /* Cambiamos left por right */
+  right: 20px; /* Cambiamos left por right */
   bottom: 20px;
   background: var(--white);
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   padding: 20px 10px; /* más espacio interno */
   display: flex;
   flex-direction: column;
@@ -616,8 +621,8 @@ max-width: 90%;
 }
 
 .bottom-icon {
-  height: 68px;  /* doble tamaño */
-  width: 68px;   /* doble tamaño */
+  height: 68px; /* doble tamaño */
+  width: 68px; /* doble tamaño */
   object-fit: contain;
   transition: transform 0.15s ease, filter 0.15s ease;
 }
@@ -664,7 +669,7 @@ max-width: 90%;
   }
 
   .bottom-icon {
-    height: 40px;  /* Tamaño más chico */
+    height: 40px; /* Tamaño más chico */
     width: 40px;
   }
 
@@ -726,7 +731,8 @@ max-width: 90%;
   margin-bottom: 0.5rem;
 }
 
-.doc-box, .donar-box {
+.doc-box,
+.donar-box {
   background: var(--primary);
   padding: 1.5rem;
   border-radius: 12px;
@@ -792,7 +798,7 @@ max-width: 90%;
 .btn-donar:hover {
   background: var(--primary-strong);
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .btn-open {
@@ -803,10 +809,9 @@ max-width: 90%;
 .btn-open:hover {
   background: var(--accent);
 }
- /*Fucking Footer/*/
- .footer {
-  background-color:#7cc6a4;        
-  ;
+/*Fucking Footer/*/
+.footer {
+  background-color: #7cc6a4;
   color: var(--text);
   padding: 20px;
   font-family: Arial, sans-serif;

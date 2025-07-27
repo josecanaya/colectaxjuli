@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
      CONFIG & BARRA DE PROGRESO
   ============================ */
   const META = 1_000_000;
-  let recaudado = 50_000;
+  let recaudado = 250_000;
 
   const barra = document.getElementById("barra");
   const recaudadoTexto = document.getElementById("recaudado");
@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlide = 0;
 
   const cambiarSlide = () => {
-    slides.forEach((slide, i) => slide.classList.toggle("active", i === currentSlide));
+    slides.forEach((slide, i) =>
+      slide.classList.toggle("active", i === currentSlide)
+    );
     if (textOverlay && slides[currentSlide]) {
       textOverlay.textContent = slides[currentSlide].dataset.text || "";
     }
@@ -43,30 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
     "And the land is dark...",
     "And the Moon is the only light we'll see..",
     "No, I won't be afraid...",
-    "Just as long as you stand"
+    "Just as long as you stand",
   ];
-  
+
   // Última frase como variable aparte
   const ultimaFrase = "Stand by me.";
-  
+
   const introOverlay = document.getElementById("intro-overlay");
   const introLines = document.getElementById("intro-lines");
   const introBtn = document.getElementById("intro-btn");
   const luna = document.getElementById("luna");
   const ojo = document.getElementById("logo-ojo");
   const skipBtn = document.getElementById("skip-btn"); // Botón "Saltar animación"
-  
+
   if (introOverlay && introLines && introBtn && luna && ojo) {
     const delayEntreFrases = 800;
     const delayEntreLetras = 50;
     let fraseIndex = 0;
-  
+
     // Función para escribir una frase
     const escribirFrase = (frase, onDone, extraClass = "") => {
       const p = document.createElement("p");
       p.className = `line ${extraClass}`.trim();
       introLines.appendChild(p);
-  
+
       [...frase].forEach((letra, i) => {
         const span = document.createElement("span");
         span.className = "char";
@@ -74,10 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
         p.appendChild(span);
         setTimeout(() => span.classList.add("show"), i * delayEntreLetras);
       });
-  
+
       setTimeout(onDone, frase.length * delayEntreLetras + 50);
     };
-  
+
     // Mostrar frases secuencialmente
     const mostrarFrasesSecuencialmente = () => {
       if (fraseIndex >= frases.length) {
@@ -92,17 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
         return;
       }
-  
+
       escribirFrase(frases[fraseIndex], () => {
         fraseIndex++;
         setTimeout(mostrarFrasesSecuencialmente, delayEntreFrases);
       });
     };
-  
+
     mostrarFrasesSecuencialmente();
-  
+
     // Función para cerrar el overlay
-  
+
     const cerrarOverlay = () => {
       introOverlay.classList.add("hide");
       introBtn.style.pointerEvents = "none"; // Desactivar clics del botón
@@ -111,59 +113,58 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.style.setProperty("--bg", "#f5fff7");
       document.documentElement.style.setProperty("--text", "#2e2e2e");
     };
-  
+
     introBtn.addEventListener("click", cerrarOverlay);
-  
+
     // Entrar con Enter
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") cerrarOverlay();
     });
-  
+
     // Botón Skip (aparece a los 5 segundos)
-    
+
     if (skipBtn) {
       setTimeout(() => {
         skipBtn.classList.add("show");
       }, 5000);
-    
+
       // Funciona en PC
       skipBtn.addEventListener("click", cerrarOverlay);
-    
+
       // Funciona en móvil (responde instantáneo)
       skipBtn.addEventListener("touchstart", (e) => {
         e.preventDefault();
         cerrarOverlay();
       });
     }
-  
+
     // Luna aparece después de 5 segundos
     setTimeout(() => luna.classList.add("show"), 5000);
-  
+
     // Luna desaparece y aparece ojo en la misma posición al segundo 13
     setTimeout(() => {
       luna.classList.remove("show");
       ojo.classList.add("show");
-  
+
       // Desaparecer el ojo después de abrirse
       setTimeout(() => ojo.classList.remove("show"), 2000);
     }, 13000);
-  
+
     // Fondo blanco al segundo 13.5
     setTimeout(() => {
       introOverlay.classList.add("fade-white");
     }, 13500);
-  
+
     // **Ocultar última frase antes de que aparezca el botón**
     setTimeout(() => {
       const finalLine = introLines.querySelector(".final");
       if (finalLine) finalLine.style.opacity = 0;
     }, 15000);
-  
+
     // Botón aparece centrado al segundo 17
     setTimeout(() => introBtn.classList.add("show"), 17000);
   }
-  
-  
+
   /* ============================
      NAV ACTIVO SEGÚN SCROLL
   ============================ */
