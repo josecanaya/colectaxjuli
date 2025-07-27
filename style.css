@@ -102,7 +102,7 @@ body {
 
 /* --- Overlay Intro --- */
 #skip-btn {
-  position: absolute;
+  position: fixed;       /* Cambié de absolute a fixed */
   top: 15px;
   right: 20px;
   background: rgba(4, 21, 253, 0.6);
@@ -112,8 +112,15 @@ body {
   padding: 6px 12px;
   cursor: pointer;
   font-size: 0.9rem;
-  z-index: 1000;
-  transition: background 0.3s ease;
+  z-index: 10000;        /* Más alto que el overlay */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, background 0.3s ease;
+}
+
+#skip-btn.show {
+  opacity: 1;
+  pointer-events: all;
 }
 
 #skip-btn:hover {

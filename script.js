@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cambiarSlide();
     setInterval(cambiarSlide, 4000);
   }
-
   const frases = [
     "When the night has come...",
     "And the land is dark...",
@@ -55,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const introBtn = document.getElementById("intro-btn");
   const luna = document.getElementById("luna");
   const ojo = document.getElementById("logo-ojo");
+  const skipBtn = document.getElementById("skip-btn"); // Botón "Saltar animación"
   
   if (introOverlay && introLines && introBtn && luna && ojo) {
     const delayEntreFrases = 800;
@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     mostrarFrasesSecuencialmente();
   
+    // Función para cerrar el overlay
     const cerrarOverlay = () => {
       introOverlay.classList.add("hide");
       document.body.classList.add("fade-in");
@@ -116,10 +117,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Enter") cerrarOverlay();
     });
   
+    // Botón Skip (aparece a los 5 segundos)
+    if (skipBtn) {
+      setTimeout(() => {
+        skipBtn.classList.add("show");
+      }, 5000);
+  
+      skipBtn.addEventListener("click", cerrarOverlay);
+    }
+  
     // Luna aparece después de 5 segundos
     setTimeout(() => luna.classList.add("show"), 5000);
   
-    // Luna desaparece y aparece ojo en la misma posición al segundo 12
+    // Luna desaparece y aparece ojo en la misma posición al segundo 13
     setTimeout(() => {
       luna.classList.remove("show");
       ojo.classList.add("show");
@@ -128,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => ojo.classList.remove("show"), 2000);
     }, 13000);
   
-    // Fondo blanco al segundo 12.5
+    // Fondo blanco al segundo 13.5
     setTimeout(() => {
       introOverlay.classList.add("fade-white");
     }, 13500);
@@ -139,16 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (finalLine) finalLine.style.opacity = 0;
     }, 15000);
   
-    // Botón aparece centrado al segundo 15
+    // Botón aparece centrado al segundo 17
     setTimeout(() => introBtn.classList.add("show"), 17000);
   }
-  const skipBtn = document.getElementById("skip-btn");
-
-if (skipBtn) {
-  skipBtn.addEventListener("click", () => {
-    cerrarOverlay();  // Reutiliza tu función existente
-  });
-}
+  
   
   /* ============================
      NAV ACTIVO SEGÚN SCROLL
