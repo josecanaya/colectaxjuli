@@ -31,22 +31,102 @@ body {
 }
 
 /* Si luego quieres animar, podés usar esta clase para aplicar la transición
-     y agregar la clase 'fade-out' para ocultar cuando quieras */
+   y agregar la clase 'fade-out' para ocultar cuando quieras */
 body.fade-out {
   opacity: 0;
   transition: opacity 1s ease;
 }
 
 /* OVERLAY INTRO */
+/* Tamaño general reducido un 30% */
+#luna,
+#logo-ojo {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.56); /* 0.8 * 0.7 = 0.56 */
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#luna.show,
+#logo-ojo.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(0.7); /* tamaño final */
+}
+
+#logo-ojo {
+  width: 420px; /* 600 * 0.7 */
+  transform-origin: center center;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 1s ease;
+}
+
+#logo-ojo.show {
+  opacity: 1;
+  animation: abrirOjo 1s forwards ease-in-out;
+}
+/* Mostrar con zoom */
+#luna.show,
+#logo-ojo.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
+}
+
+@keyframes abrirOjo {
+  0% {
+    transform: translateX(-50%) scale(0.7) scaleY(0);
+  }
+  60% {
+    transform: translateX(-50%) scale(0.7) scaleY(1.2);
+  }
+  100% {
+    transform: translateX(-50%) scale(0.7) scaleY(1);
+  }
+}
+
+#luna {
+  width: 280px; /* 400 * 0.7 */
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+/* Fondo blanco */
+.fade-white {
+  background: #ffffff !important;
+  transition: background 1s ease;
+}
+
+/* --- Estilos generales --- */
 body {
   font-family: "Arial", sans-serif;
-  /* ... */
 }
 
-#intro-overlay {
-  font-family: "Dancing Script", cursive;
+/* --- Overlay Intro --- */
+#skip-btn {
+  position: fixed; /* Cambié de absolute a fixed */
+  top: 15px;
+  right: 20px;
+  background: rgba(4, 21, 253, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 10000; /* Más alto que el overlay */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, background 0.3s ease;
 }
 
+#skip-btn.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#skip-btn:hover {
+  background: rgba(243, 247, 5, 0.8);
+}
 #intro-overlay {
   position: fixed;
   inset: 0;
@@ -55,6 +135,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Dancing Script", cursive;
   z-index: 9999;
   transition: opacity 0.8s ease;
 }
@@ -70,30 +151,57 @@ body {
   text-align: center;
 }
 
+/* --- Líneas de frases --- */
 #intro-lines {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* controla el espacio entre frases */
+  gap: 6px; /* espacio entre frases */
   margin-bottom: 28px;
 }
 
 .line {
-  margin: 0; /* elimina margenes verticales */
+  margin: 0;
   font-size: clamp(1.2rem, 4vw, 2rem);
   line-height: 1.4;
   white-space: pre-wrap;
+  text-shadow: 2px 2px 4px #000; /* Reborde negro */
 }
 
 #intro-lines .line:last-child {
   color: yellow;
   font-size: clamp(1.6rem, 5vw, 2.5rem);
   font-weight: bold;
+  text-shadow: 2px 2px 5px #000; /* Reborde más marcado */
 }
 
+.line.big {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #000;
+  font-weight: 1500;
+  transform: scale(1.2);
+  transition: transform 1s ease, font-size 1s ease, color 1s ease;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.line.final {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: all 1s ease;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.line.final.big {
+  font-size: 8rem;
+  text-shadow: 3px 3px 6px #000; /* Más reborde en la frase final */
+}
+
+/* --- Caracteres animados --- */
 .char {
   opacity: 0;
   display: inline-block;
   transform: translateY(6px);
+  text-shadow: 2px 2px 4px #000;
 }
 
 .char.show {
@@ -101,8 +209,12 @@ body {
   transform: translateY(0);
   transition: opacity 0.18s ease, transform 0.18s ease;
 }
+
 #intro-btn {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: none;
   border: none;
   color: var(--accent);
@@ -110,7 +222,9 @@ body {
   font-weight: bold;
   cursor: pointer;
   padding: 0;
-  transition: color 0.3s ease;
+  transition: opacity 1s ease, color 0.3s ease;
+  opacity: 0; /* Oculto al inicio */
+  pointer-events: none; /* No clickeable mientras está oculto */
 }
 
 #intro-btn::after {
@@ -130,6 +244,12 @@ body {
 
 #intro-btn:hover::after {
   width: 100%;
+}
+
+/* Clase para mostrar el botón */
+#intro-btn.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 /* NAV */
 .navbar {
@@ -203,7 +323,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eaf6ea; /* Fondo blanco para resaltar logo */
+  background: #eaf6ea; /* Fondo para resaltar logo */
   padding: 20px;
 }
 
@@ -240,6 +360,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .slide img {
   width: 100%;
   height: 100%;
@@ -265,26 +386,43 @@ body {
   text-align: center;
   max-width: 90%;
 }
+
+/* VERSIÓN MÓVIL */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column; /* Cambia a columna si es necesario */
-    height: auto; /* Ajusta la altura al contenido */
+    flex-direction: column;
+    height: auto;
   }
-
   .hero-left {
-    display: none; /* Oculta el hero-left */
+    display: none;
   }
-
   .hero-right {
-    flex: 1 0 100%; /* Ocupa todo el ancho */
-    height: auto; /* Ajusta la altura al tamaño de la imagen */
+    flex: 1 0 100%;
+    height: auto;
   }
-
-  .slider,
+  .slider {
+    height: 300px; /* fijar altura para que funcionen las slides absolutas */
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide.active {
+    opacity: 1;
+  }
   .slide img {
     width: 100%;
-    height: auto; /* Mantiene proporción */
-    object-fit: contain; /* La imagen no se recorta */
+    height: 100%;
+    object-fit: contain;
   }
 }
 
@@ -327,7 +465,8 @@ body {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 1em;
-  color: var(--accent); /* Color destacado para el título */
+  color: var(--accent);
+  text-align: center;
 }
 
 #historia p {
@@ -430,87 +569,6 @@ body {
   border-radius: 10px;
   padding: 16px 18px;
   box-shadow: 0 2px 8px var(--shadow);
-}
-
-/* Centro vertical para elementos de la tarjeta cripto */
-.crypto-donar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-/* Lista de tokens */
-.token-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.token-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: var(--white);
-  padding: 6px 10px;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px var(--shadow);
-  font-size: 0.9rem;
-}
-
-.token-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.token-amount {
-  width: 70px;
-  padding: 4px 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-
-.token-max {
-  padding: 4px 6px;
-  border: none;
-  background: var(--primary-strong);
-  color: #fff;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.token-max:hover {
-  background: var(--accent);
-}
-
-.token-item button {
-  padding: 4px 8px;
-  border: none;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.token-item button:hover {
-  background: var(--primary-strong);
-}
-
-.wallet-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
 .card h3 {
@@ -777,8 +835,4 @@ body {
 .contact-item a:hover {
   color: var(--primary);
   text-decoration: underline;
-}
-
-.card-full {
-  grid-column: 1 / -1; /* ocupa todas las columnas disponibles */
 }

@@ -4,33 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Todos por Julio</title>
-   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
+  <meta property="og:title" content="Todos por julio">
+  <meta property="og:description" content="Campaña solidaria para tratamiento Ocu400 Julio Contrera">
+  <meta property="og:image" content="https://josecanaya.github.io/colectaxjuli/imagen/logo.png">
+  <meta property="og:url" content="https://todosxjulio.com.ar">
+  <meta property="og:type" content="website">
 </head>
 <body class="fade-in">
-
-    <div id="intro-overlay">
-        <div class="intro-content">
-          <div id="intro-lines"></div>
-          <button id="intro-btn"><img src="imagen/logo.png" alt="Logo"></button>
-        </div>
-      </div>
+  <div id="intro-overlay">
+    <button id="skip-btn">Saltar animación ✕</button>
+    <div class="logo-container">
+      <img id="logo-ojo" src="imagen/logo-ojo-abierto.png" alt="Logo">
+      <img id="luna" src="imagen/luna.png" alt="Luna">
+    </div>
+    <div id="intro-lines"></div>
+    <button id="intro-btn"><img src="imagen/logo.png" alt="Logo"></button>
+  </div>
   <!-- NAV -->
   <header class="navbar">
-    
     <nav>
       <ul>
         <li><a href="#historia">Historia</a></li>
         <li><a href="#estudio">Estudio</a></li>
         <li><a href="#donar">Donar</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#contacto">PRUEBA DE ACTUALIZACION 19:40</a></li>
       </ul>
     </nav>
   </header>
- <!-- HERO-->
- <header class="hero">
+  <!-- HERO-->
+  <header class="hero">
     <div class="hero-left">
       <img src="imagen/logo.png" alt="Logo Julio" class="hero-logo">
     </div>
@@ -95,8 +100,7 @@
     Mis papás no pueden pagar todo solos, por eso lanzamos esta <b>campaña solidaria</b> para que entre todos podamos lograrlo.
   </p>
   <p>
-    Cada ayuda, por más pequeña que sea, significa un montón para mí.  
-    <b>Gracias de corazón por darme tu apoyo ❤️</b>. Con tu ayuda voy a poder seguir soñando, aprendiendo y viendo el mundo con esperanza.
+    Tu ayuda marca una gran diferencia en mi vida.<b>Gracias de corazón por acompañarme en este camino</b> ❤️. Gracias a ti, sigo creciendo, soñando y creyendo que todo es posible.
   </p>
   </section>
 
@@ -140,15 +144,15 @@
       <div class="card">
         <h3>Costos Estimados</h3>
         <p><strong>Total:</strong> USD 50.000</p>
-        <p>Incluye viajes, estadías, traslados y atención hospitalaria.</p>
+        <p>Incluye viajes, estadías Y traslados</p>
       </div>
   
 
   
     <!-- Documentación -->
     <div class="doc-box">
-      <p>Contamos con la documentación médica y presupuestos disponibles para quien lo requiera.</p>
-      <a href="#" class="btn-doc">Ver documentación médica</a>
+      <p>Contamos con la documentación médica disponibles para quien lo requiera.</p>
+      <a href="imagen/invitacionmedica.pdf" class="btn-doc">Ver documentación médica</a>
     </div>
   
   
@@ -159,10 +163,10 @@
       <section id="donar" class="donar-section">
         <h2>¡Colaborá con Julio!</h2>
         <div class="donar-buttons">
-          <a href="https://mpago.la/1vH1v9W" class="btn-donar">$1.000</a>
-          <a href="https://mpago.la/1m37pvz" class="btn-donar">$2.000</a>
-          <a href="https://mpago.la/18Yvum9" class="btn-donar">$5.000</a>
-          <a href="https://mpago.la/2QcwZCd" class="btn-donar">$10.000</a>
+          <a href="https://mpago.la/1vH1v9W" target="_blank" class="btn-donar">$1.000</a>
+          <a href="https://mpago.la/1m37pvz" target="_blank" class="btn-donar">$2.000</a>
+          <a href="https://mpago.la/18Yvum9" target="_blank" class="btn-donar">$5.000</a>
+          <a href="https://mpago.la/2QcwZCd" target="_blank" class="btn-donar">$10.000</a>
           <a href="https://link.mercadopago.com.ar/colectaxjuli" class="btn-donar btn-open">Otro monto</a>
         </div>
       </section>
@@ -190,19 +194,32 @@
 
         <div class="card">
           <h3>PayPal</h3>
-          <p><a href="#" target="_blank" rel="noopener noreferrer">[Tu enlace de PayPal]</a></p>
-        </div>
-
-        <div class="card card-full">
-          <h3>Criptomonedas (ETH)</h3>
-          <div class="crypto-donar">
-            <button id="connect-wallet" class="btn-donar">Conectar billetera</button>
-            <div id="wallet-info" class="wallet-info" style="display:none; margin-top:10px;">
-              <p style="text-align: center;">Conectado como: <span id="wallet-address"></span></p>
-
-              <div id="token-list" class="token-list"></div>
-            </div>
-          </div>
+          <a href="https://www.paypal.com/donate/?hosted_button_id=AV4XM83GZZ7AJ" target="_blank" class="paypal-btn">
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
+            Donar con PayPal
+          </a>
+          
+          <style>
+          .paypal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: #0070ba;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+          }
+          .paypal-btn img {
+            width: 24px;
+            height: 24px;
+          }
+          .paypal-btn:hover {
+            background-color: #005c99;
+          }
+          </style>
         </div>
       </div>
 
@@ -221,7 +238,7 @@
           <span class="tooltip">Teléfono Papá</span>
         </a>
       
-        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer" class="bottom-item" aria-label="Instagram">
+        <a href="https://www.instagram.com/todosxjulito/" target="_blank" rel="noopener noreferrer" class="bottom-item" aria-label="Instagram">
           <img src="imagen/instagram.png" alt="Instagram" class="bottom-icon">
           <span class="tooltip">Instagram</span>
         </a>
@@ -247,4 +264,6 @@
 
 <script src="config.js"></script>
 <script src="script.js" ></script>
+<script src="crypto.js"></script>
+</body>
 </html>
