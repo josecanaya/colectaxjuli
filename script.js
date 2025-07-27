@@ -102,8 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarFrasesSecuencialmente();
   
     // Función para cerrar el overlay
+  
     const cerrarOverlay = () => {
       introOverlay.classList.add("hide");
+      introBtn.style.pointerEvents = "none"; // Desactivar clics del botón
       document.body.classList.add("fade-in");
       setTimeout(() => document.body.classList.add("show"), 50);
       document.documentElement.style.setProperty("--bg", "#f5fff7");
