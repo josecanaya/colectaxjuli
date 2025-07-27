@@ -270,31 +270,35 @@
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    height: auto;            /* Ajusta la altura al contenido */
+    height: auto;
   }
-
   .hero-left {
-    display: none;           /* Oculta el bloque izquierdo */
+    display: none;
   }
-
   .hero-right {
-    flex: 1 0 100%;          /* Ocupa todo el ancho */
+    flex: 1 0 100%;
     height: auto;
   }
-
   .slider {
-    height: auto;
+    height: 300px; /* fijar altura para que funcionen las slides absolutas */
+    position: relative;
   }
-
   .slide {
-    position: relative;       /* Importante para que se vea */
-    opacity: 1;
-    height: auto;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
+  .slide.active {
+    opacity: 1;
+  }
   .slide img {
     width: 100%;
-    height: auto;             /* Mantiene proporción */
+    height: 100%;
     object-fit: contain;
   }
 }
