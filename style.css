@@ -104,18 +104,17 @@ body.fade-out {
   background: #ffffff !important;
   transition: background 1s ease;
 }
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 250px) {
+/* Media query para pantallas pequeñas (por ejemplo, móviles) */
+@media (max-width: 600px) {
   #luna, #logo-ojo {
-    max-width: 80vw;
-    max-height: 50vh;
+    max-width: 40vw;     /* mitad del 80vw */
+    max-height: 35vh;    /* proporcional al tamaño */
     width: auto;
     height: auto;
-    transform: translateX(-50%) scale(0.5) !important;
+    transform: translateX(-50%) scale(0.35) !important; /* mitad de 0.7 */
   }
   #luna.show, #logo-ojo.show {
-    transform: translateX(-50%) scale(0.6) !important;
+    transform: translateX(-50%) scale(0.35) !important; /* mitad de 0.7 */
   }
   #logo-ojo {
     width: auto;
