@@ -101,6 +101,24 @@ body {
 }
 
 /* --- Overlay Intro --- */
+#skip-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: rgba(4, 21, 253, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+#skip-btn:hover {
+  background: rgba(243, 247, 5, 0.8);
+}
 #intro-overlay {
   position: fixed;
   inset: 0;

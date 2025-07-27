@@ -142,6 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Botón aparece centrado al segundo 15
     setTimeout(() => introBtn.classList.add("show"), 17000);
   }
+  const skipBtn = document.getElementById("skip-btn");
+
+if (skipBtn) {
+  skipBtn.addEventListener("click", () => {
+    cerrarOverlay();  // Reutiliza tu función existente
+  });
+}
   
   /* ============================
      NAV ACTIVO SEGÚN SCROLL
