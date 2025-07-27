@@ -42,60 +42,87 @@ body.fade-out {
   position: absolute;
   top: 50px;                    /* Ajusta esta posición si hace falta */
   left: 50%;
-  transform: translateX(-50%) scale(0.8);
+  transform: translateX(-50%) scale(0.56); /* 0.8 * 0.7 = 0.56 (reducción 30%) */
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
+  max-width: 90vw;              /* No exceder el 90% del ancho viewport */
+  height: auto;
+  width: auto;
+  max-height: 70vh;             /* Evitar que ocupe demasiado alto en móviles */
+  box-sizing: border-box;
 }
 
 /* Mostrar con zoom */
 #luna.show, #logo-ojo.show {
   opacity: 1;
-  transform: translateX(-50%) scale(1);
+  transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
 }
 
 /* OJO */
 #logo-ojo {
-  width: 600px;                 /* 120px × 5 */
-  transform: translateX(-50%) scale(0) scaleY(0); /* Comienza cerrado y pequeño */
+  width: 420px;                 /* 600px * 0.7 = 420px (reducción 30%) */
+  max-width: 90vw;              /* Escalable en móviles */
+  transform: translateX(-50%) scale(0) scaleY(0);
   transform-origin: center center;
-  opacity: 0;                   
+  opacity: 0;
   transition: opacity 0.5s ease, transform 1s ease;
 }
 
 #logo-ojo.show {
   opacity: 1;
-  animation: abrirOjo 1s forwards ease-in-out; /* Animación de apertura */
+  animation: abrirOjo 1s forwards ease-in-out;
 }
 
 /* Animación de apertura del ojo */
 @keyframes abrirOjo {
   0% {
-    transform: translateX(-50%) scale(1) scaleY(0);
+    transform: translateX(-50%) scale(0.7) scaleY(0);
   }
   60% {
-    transform: translateX(-50%) scale(1) scaleY(1.2); /* Pequeña "sobre-apertura" */
+    transform: translateX(-50%) scale(0.7) scaleY(1.2);
   }
   100% {
-    transform: translateX(-50%) scale(1) scaleY(1);   /* Queda abierto */
+    transform: translateX(-50%) scale(0.7) scaleY(1);
   }
 }
 
 /* LUNA */
 #luna {
-  width: 400px;                 /* 80px × 5 */
+  width: 280px;                 /* 400px * 0.7 = 280px */
+  max-width: 90vw;              /* Escalable en móviles */
   opacity: 0;
   transition: opacity 1s ease, transform 1s ease;
 }
 
 #luna.show {
   opacity: 1;
-  transform: translateX(-50%) scale(1);
+  transform: translateX(-50%) scale(0.7);
 }
 
-
+/* Fondo blanco */
 .fade-white {
   background: #ffffff !important;
   transition: background 1s ease;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  #luna, #logo-ojo {
+    max-width: 80vw;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) scale(0.5) !important;
+  }
+  #luna.show, #logo-ojo.show {
+    transform: translateX(-50%) scale(0.6) !important;
+  }
+  #logo-ojo {
+    width: auto;
+  }
+  #luna {
+    width: auto;
+  }
 }
 
 /* --- Estilos generales --- */
