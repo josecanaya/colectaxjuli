@@ -106,7 +106,7 @@ body.fade-out {
 }
 
 /* Media query para pantallas pequeñas */
-@media (max-width: 600px) {
+@media (max-width: 250px) {
   #luna, #logo-ojo {
     max-width: 80vw;
     max-height: 50vh;
