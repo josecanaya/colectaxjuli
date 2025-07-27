@@ -342,7 +342,8 @@
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1em;
-    color: var(--accent);              /* Color destacado para el título */
+    color: var(--accent);  
+    text-align: center;          
   }
   
   #historia p {
