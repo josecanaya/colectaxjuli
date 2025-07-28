@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================
      CONFIG & BARRA DE PROGRESO
   ============================ */
-  const META = 1_000_000;
-  let recaudado = 244_000;
+  const META = 50_000_000;
+  let recaudado = 280_000;
 
   const barra = document.getElementById("barra");
   const recaudadoTexto = document.getElementById("recaudado");
