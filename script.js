@@ -19,7 +19,7 @@ if (barra && recaudadoTexto) {
     recaudadoTexto.textContent = recaudado.toLocaleString("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
-    }) + " USD";
+    }) + " U$D";
   };
 
   actualizarBarra();
