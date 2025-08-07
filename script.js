@@ -4,21 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================
      CONFIG & BARRA DE PROGRESO
   ============================ */
-  const META = 25_000_000;
-  let recaudado = 9_055_520;
+const META = 36_000;
+let recaudado = 6859.22;
 
-  const barra = document.getElementById("barra");
-  const recaudadoTexto = document.getElementById("recaudado");
+const barra = document.getElementById("barra");
+const recaudadoTexto = document.getElementById("recaudado");
 
-  if (barra && recaudadoTexto) {
-    const actualizarBarra = () => {
-      const porcentaje = Math.min((recaudado / META) * 100, 100);
-      barra.style.width = porcentaje + "%";
-      recaudadoTexto.textContent = "$" + recaudado.toLocaleString("es-AR");
-    };
-    actualizarBarra();
-  }
+if (barra && recaudadoTexto) {
+  const actualizarBarra = () => {
+    const porcentaje = Math.min((recaudado / META) * 100, 100);
+    barra.style.width = porcentaje + "%";
 
+    // Formatear el número con separadores de miles y agregar USD al final
+    recaudadoTexto.textContent = recaudado.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }) + " USD";
+  };
+
+  actualizarBarra();
+}
+  
   /* ============================
      SLIDER DE HERO
   ============================ */
