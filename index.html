@@ -170,7 +170,10 @@
   <h2>Comprar Rifa Solidaria</h2>
   <p>Completá tus datos y elegí la cantidad de rifas. Después del pago te asignaremos los números disponibles y te los enviaremos por WhatsApp.</p>
 
-  <form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;">
+  <!-- Formulario enviando directamente a Google Sheets -->
+  <form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;"
+        action="https://script.google.com/macros/s/AKfycbzLl-G2_oXJO9ecxwSSLiClSGgsaRrvqRosV-S_GoyvB7wkFqJtorsANCY8pchU4psWAQ/exec" method="POST" target="hidden_iframe">
+    
     <label>
       Nombre y Apellido:
       <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 8px;">
@@ -187,10 +190,9 @@
         <option value="Llamada">Llamada</option>
       </select>
     </label>
-
     <label>
       Cantidad de rifas:
-      <select id="cantidad-rifas" required style="width: 100%; padding: 8px;">
+      <select name="cantidad" id="cantidad-rifas" required style="width: 100%; padding: 8px;">
         <option value="">-- Seleccionar --</option>
         <option value="1">1 rifa</option>
         <option value="3">3 rifas</option>
@@ -209,6 +211,9 @@
 
     <button type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
   </form>
+
+  <!-- iframe oculto para evitar recargar la página -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 </section>
 
 <script>
@@ -232,41 +237,7 @@
       pagoDiv.style.display = "none";
     }
   });
-
-  // Enviar datos a Google Sheets
-  document.getElementById("rifa-form").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const nombre = this.nombre.value;
-    const telefono = this.telefono.value;
-    const contacto = this.contacto.value;
-    const cantidad = document.getElementById("cantidad-rifas").value;
-
-  
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyqoaRX8v6f33MJI9jwdH-cciu5Mw-QRnwO2oDAuJpqkQ_X_DjwDV_kp5EA4TVtD2jLvg/exec";
-
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify({ nombre, telefono, contacto, cantidad }),
-      headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === "ok") {
-        alert("Tus datos fueron guardados correctamente. ¡Gracias por colaborar!");
-        this.reset();
-        document.getElementById("botones-pago").style.display = "none";
-      } else {
-        alert("Error al guardar tus datos: " + (data.message || "Intentá de nuevo."));
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Error al guardar tus datos. Intentá de nuevo.");
-    });
-  });
 </script>
-   
       <section id="donar" class="donar-section">
         <h2>¡Colaborá con Julio!</h2>
         <div class="donar-buttons">
@@ -406,6 +377,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
