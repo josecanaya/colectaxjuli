@@ -14,6 +14,13 @@
   <meta property="og:type" content="website">
 </head>
 <body class="fade-in">
+  <script>
+  const password = "Rosariocentral40"; // Cambiá la contraseña a lo que quieras
+  let intento = prompt("La página está bloqueada temporalmente. Ingresá la contraseña:");
+  if (intento !== password) {
+    document.body.innerHTML = "<h2>Acceso denegado. La página está bloqueada temporalmente.</h2>";
+  }
+</script>
   <div id="intro-overlay">
     <button id="skip-btn">Saltar animación ✕</button>
     <div class="logo-container">
@@ -299,6 +306,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
