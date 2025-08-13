@@ -166,14 +166,16 @@
     <section id="donar" class="section">
       <h2>Cómo Donar</h2>
 <!-- COMPRA DE RIFAS -->
+<!-- COMPRA DE RIFAS -->
 <section id="rifa" class="section" style="margin-top: 40px;">
   <h2>Comprar Rifa Solidaria</h2>
   <p>Completá tus datos y elegí la cantidad de rifas. Después del pago te asignaremos los números disponibles y te los enviaremos por WhatsApp.</p>
 
   <!-- Formulario enviando directamente a Google Sheets -->
   <form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;"
-        action="https://script.google.com/macros/s/AKfycby1Vsirc4wOqeKoByKQ98eisOM6eHyRR_2Fu9-E724iSgtXX3PWgpxxn0K9Fed0U2yh4A/exec" method="POST" target="hidden_iframe">
-    
+        action="https://script.google.com/macros/s/AKfycby1Vsirc4wOqeKoByKQ98eisOM6eHyRR_2Fu9-E724iSgtXX3PWgpxxn0K9Fed0U2yh4A/exec"
+        method="POST" target="hidden_iframe">
+
     <label>
       Nombre y Apellido:
       <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 8px;">
@@ -209,7 +211,7 @@
       <a id="btn-pago-15" href="https://mpago.la/1x8Shx3" target="_blank" class="btn-donar">Pagar 15 Rifas</a>
     </div>
 
-    <button type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
+    <button id="btn-guardar" type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
   </form>
 
   <!-- iframe oculto para evitar recargar la página -->
@@ -231,13 +233,28 @@
     Object.values(btns).forEach(btn => btn.style.display = "none");
 
     if (this.value && btns[this.value]) {
-      pagoDiv.style.display = "flex";
-      btns[this.value].style.display = "inline-block";
-    } else {
-      pagoDiv.style.display = "none";
+      // Botones de pago se mostrarán solo después de guardar
+      Object.values(btns).forEach(btn => btn.dataset.showAfterSave = "true");
     }
   });
+
+  // Cuando el formulario se envía
+  document.getElementById("rifa-form").addEventListener("submit", function() {
+    const btnGuardar = document.getElementById("btn-guardar");
+    const pagoDiv = document.getElementById("botones-pago");
+    const cantidad = document.getElementById("cantidad-rifas").value;
+
+    // Esperar un poco para asegurar que Google Sheets procese el envío
+    setTimeout(() => {
+      btnGuardar.style.display = "none"; // Ocultar guardar
+      pagoDiv.style.display = "flex"; // Mostrar botones de pago
+      // Mostrar solo el botón correspondiente
+      document.querySelectorAll("#botones-pago a").forEach(a => a.style.display = "none");
+      document.getElementById("btn-pago-" + cantidad).style.display = "inline-block";
+    }, 1000);
+  });
 </script>
+
       <section id="donar" class="donar-section">
         <h2>¡Colaborá con Julio!</h2>
         <div class="donar-buttons">
@@ -377,6 +394,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
