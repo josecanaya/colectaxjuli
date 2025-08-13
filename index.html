@@ -179,36 +179,7 @@
         </div>
       </div>
 
-      <!-- DONAR CON CRIPTO -->
-      <div id="donar-cripto" class="card" style="margin-top:16px;">
-        <h3>Donar con Cripto</h3>
-
-        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-          <button id="crypto-connect-btn" class="btn-donar">Conectar wallet</button>
-
-          <span id="crypto-wallet" style="font-weight:bold;"></span>
-          <span style="opacity:.8; font-size:.95rem;">Escaneando: Ethereum, Polygon, Arbitrum, Base, BNB Smart Chain, Tron</span>
-        </div>
-
-        <div style="margin-top:12px;">
-          <label>Token con fondos:
-            <select id="crypto-token-select" disabled>
-              <option value="">— Conectá la wallet —</option>
-            </select>
-          </label>
-          <div id="crypto-balance" style="margin-top:6px; font-size:0.95rem; opacity:.9;"></div>
-        </div>
-
-        <div style="margin-top:12px; display:flex; gap:8px; align-items:center;">
-          <label>Monto:
-            <input id="crypto-amount" type="text" inputmode="decimal" placeholder="0.0" style="width:160px;">
-          </label>
-          <button id="crypto-max-btn" class="btn-donar btn-open" type="button">Max</button>
-          <button id="crypto-donate-btn" class="btn-donar" disabled>Donar</button>
-        </div>
-
-        <div id="crypto-status" style="margin-top:12px;"></div>
-      </div>
+    
 
     <div class="métodos">
         <div class="card">
@@ -252,6 +223,36 @@
           }
           </style>
         </div>
+      </div>
+        <!-- DONAR CON CRIPTO -->
+      <div id="donar-cripto" class="card" style="margin-top:16px;">
+        <h3>Donar con Cripto</h3>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+          <button id="crypto-connect-btn" class="btn-donar">Conectar wallet</button>
+
+          <span id="crypto-wallet" style="font-weight:bold;"></span>
+          <span style="opacity:.8; font-size:.95rem;">Escaneando: Ethereum, Polygon, Arbitrum, Base, BNB Smart Chain, Tron</span>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Token con fondos:
+            <select id="crypto-token-select" disabled>
+              <option value="">— Conectá la wallet —</option>
+            </select>
+          </label>
+          <div id="crypto-balance" style="margin-top:6px; font-size:0.95rem; opacity:.9;"></div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:8px; align-items:center;">
+          <label>Monto:
+            <input id="crypto-amount" type="text" inputmode="decimal" placeholder="0.0" style="width:160px;">
+          </label>
+          <button id="crypto-max-btn" class="btn-donar btn-open" type="button">Max</button>
+          <button id="crypto-donate-btn" class="btn-donar" disabled>Donar</button>
+        </div>
+
+        <div id="crypto-status" style="margin-top:12px;"></div>
       </div>
 
       
@@ -298,5 +299,6 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
