@@ -167,48 +167,49 @@
       <h2>Cómo Donar</h2>
 <!-- COMPRA DE RIFAS -->
 <section id="rifa" class="section" style="margin-top: 40px;">
-<h2>Comprar Rifa Solidaria</h2>
-<p>Completá tus datos y elegí la cantidad de rifas. Después del pago te asignaremos los números disponibles y te los enviaremos por WhatsApp.</p>
+  <h2>Comprar Rifa Solidaria</h2>
+  <p>Completá tus datos y elegí la cantidad de rifas. Después del pago te asignaremos los números disponibles y te los enviaremos por WhatsApp.</p>
 
-<form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;">
-  <label>
-    Nombre y Apellido:
-    <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 8px;">
-  </label>
-  <label>
-    Teléfono / WhatsApp:
-    <input type="tel" name="telefono" required placeholder="Ej: 341 555 5555" maxlength="10" pattern="\d{10}" title="Ingrese 10 dígitos numéricos" style="width: 100%; padding: 8px;">
-  </label>
-  <label>
-    Medio de contacto preferido:
-    <select name="contacto" required style="width: 100%; padding: 8px;">
-      <option value="">-- Seleccionar --</option>
-      <option value="WhatsApp">WhatsApp</option>
-      <option value="Llamada">Llamada</option>
-    </select>
-  </label>
+  <form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;">
+    <label>
+      Nombre y Apellido:
+      <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 8px;">
+    </label>
+    <label>
+      Teléfono / WhatsApp:
+      <input type="tel" name="telefono" required placeholder="Ej: 3415555555" maxlength="10" pattern="\d{10}" title="Ingrese 10 dígitos numéricos" style="width: 100%; padding: 8px;">
+    </label>
+    <label>
+      Medio de contacto preferido:
+      <select name="contacto" required style="width: 100%; padding: 8px;">
+        <option value="">-- Seleccionar --</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="Llamada">Llamada</option>
+      </select>
+    </label>
 
-  <label>
-    Cantidad de rifas:
-    <select id="cantidad-rifas" required style="width: 100%; padding: 8px;">
-      <option value="">-- Seleccionar --</option>
-      <option value="1">1 rifa</option>
-      <option value="3">3 rifas</option>
-      <option value="6">6 rifas</option>
-      <option value="15">15 rifas</option>
-    </select>
-  </label>
+    <label>
+      Cantidad de rifas:
+      <select id="cantidad-rifas" required style="width: 100%; padding: 8px;">
+        <option value="">-- Seleccionar --</option>
+        <option value="1">1 rifa</option>
+        <option value="3">3 rifas</option>
+        <option value="6">6 rifas</option>
+        <option value="15">15 rifas</option>
+      </select>
+    </label>
 
-  <!-- Botones de pago -->
-  <div id="botones-pago" style="display:none; flex-direction: column; gap: 10px; margin-top: 10px;">
-    <a id="btn-pago-1" href="https://mpago.la/1rqvmU2" target="_blank" class="btn-donar">Pagar 1 Rifa</a>
-    <a id="btn-pago-3" href="https://mpago.la/29SHVVZ" target="_blank" class="btn-donar">Pagar 3 Rifas</a>
-    <a id="btn-pago-6" href="https://mpago.la/1xaDPFJ" target="_blank" class="btn-donar">Pagar 6 Rifas</a>
-    <a id="btn-pago-15" href="https://mpago.la/1x8Shx3" target="_blank" class="btn-donar">Pagar 15 Rifas</a>
-  </div>
+    <!-- Botones de pago -->
+    <div id="botones-pago" style="display:none; flex-direction: column; gap: 10px; margin-top: 10px;">
+      <a id="btn-pago-1" href="https://mpago.la/1rqvmU2" target="_blank" class="btn-donar">Pagar 1 Rifa</a>
+      <a id="btn-pago-3" href="https://mpago.la/29SHVVZ" target="_blank" class="btn-donar">Pagar 3 Rifas</a>
+      <a id="btn-pago-6" href="https://mpago.la/1xaDPFJ" target="_blank" class="btn-donar">Pagar 6 Rifas</a>
+      <a id="btn-pago-15" href="https://mpago.la/1x8Shx3" target="_blank" class="btn-donar">Pagar 15 Rifas</a>
+    </div>
 
-  <button type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
-</form>
+    <button type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
+  </form>
+</section>
 
 <script>
   // Mostrar botón de pago según cantidad elegida
@@ -225,7 +226,6 @@
     Object.values(btns).forEach(btn => btn.style.display = "none");
 
     if (this.value && btns[this.value]) {
-      // Mostrar contenedor y solo el botón correspondiente
       pagoDiv.style.display = "flex";
       btns[this.value].style.display = "inline-block";
     } else {
@@ -242,6 +242,7 @@
     const contacto = this.contacto.value;
     const cantidad = document.getElementById("cantidad-rifas").value;
 
+  
     const scriptURL = "https://script.google.com/macros/s/AKfycbyqoaRX8v6f33MJI9jwdH-cciu5Mw-QRnwO2oDAuJpqkQ_X_DjwDV_kp5EA4TVtD2jLvg/exec";
 
     fetch(scriptURL, {
@@ -251,9 +252,13 @@
     })
     .then(response => response.json())
     .then(data => {
-      alert("Tus datos fueron guardados correctamente. ¡Gracias por colaborar!");
-      this.reset();
-      document.getElementById("botones-pago").style.display = "none";
+      if (data.status === "ok") {
+        alert("Tus datos fueron guardados correctamente. ¡Gracias por colaborar!");
+        this.reset();
+        document.getElementById("botones-pago").style.display = "none";
+      } else {
+        alert("Error al guardar tus datos: " + (data.message || "Intentá de nuevo."));
+      }
     })
     .catch(err => {
       console.error(err);
@@ -401,6 +406,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
