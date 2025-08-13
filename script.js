@@ -46,6 +46,9 @@ if (barra && recaudadoTexto) {
     cambiarSlide();
     setInterval(cambiarSlide, 4000);
   }
+
+
+////INTRO OVERLAY///
   const frases = [
     "When the night has come...",
     "And the land is dark...",
