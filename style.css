@@ -310,6 +310,19 @@ body {
     margin-top: 0.5rem;
   }
 }
+.rifa-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .rifa-image {
+    width: 100%;
+    margin: 10px auto;
+  }
+}
 /* SLIDER HERO */
 .hero {
   display: flex;
@@ -836,6 +849,7 @@ body {
   color: var(--primary);
   text-decoration: underline;
 }
+
 
 
 
