@@ -48,7 +48,7 @@ if (barra && recaudadoTexto) {
   }
 
 
-////INTRO OVERLAY///
+/*///INTRO OVERLAY
   const frases = [
     "When the night has come...",
     "And the land is dark...",
@@ -174,7 +174,21 @@ if (barra && recaudadoTexto) {
     setTimeout(() => introBtn.classList.add("show"), 17000);
   }
 
-  /* ============================
+  /*/ 
+const introOverlay = document.getElementById("intro-overlay");
+const skipBtn = document.getElementById("skip-btn");
+const introVideo = document.getElementById("intro-video");
+
+const cerrarOverlay = () => {
+  introOverlay.classList.add("hide");
+  setTimeout(() => introOverlay.remove(), 800);
+};
+
+skipBtn.addEventListener("click", cerrarOverlay);
+
+// Cerrar automáticamente cuando termine el video
+introVideo.addEventListener("ended", cerrarOverlay);
+============================
      NAV ACTIVO SEGÚN SCROLL
   ============================ */
   const sections = document.querySelectorAll("main section[id]");
