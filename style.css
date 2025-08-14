@@ -1,281 +1,66 @@
 :root {
-  --bg: #eaf6ea;
-  --text: #2e2e2e;
-  --primary: #cfeedd; /* verde muy pálido */
-  --primary-strong: #9ed2b6; /* verde suave */
-  --accent: #7cc6a4; /* un poco más marcado para botones */
-  --white: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.06);
+  --bg: #eaf6ea;
+  --text: #2e2e2e;
+  --primary: #cfeedd; /* verde muy pálido */
+  --primary-strong: #9ed2b6; /* verde suave */
+  --accent: #7cc6a4; /* un poco más marcado para botones */
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.06);
 }
 
 /* Importar fuente */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-
-  /* Modificado para que fade-in no oculte el contenido */
-  opacity: 1;
-  transition: opacity 1s ease;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-/* Si luego quieres animar, podés usar esta clase para aplicar la transición
-   y agregar la clase 'fade-out' para ocultar cuando quieras */
-body.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-/* OVERLAY INTRO */
-/* Tamaño general reducido un 30% */
-#luna,
-#logo-ojo {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.56); /* 0.8 * 0.7 = 0.56 */
-  opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-#luna.show,
-#logo-ojo.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(0.7); /* tamaño final */
-}
-
-#logo-ojo {
-  width: 420px; /* 600 * 0.7 */
-  transform-origin: center center;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 1s ease;
-}
-
-#logo-ojo.show {
-  opacity: 1;
-  animation: abrirOjo 1s forwards ease-in-out;
-}
-/* Mostrar con zoom */
-#luna.show,
-#logo-ojo.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(0.7); /* 1 * 0.7 = 0.7 escala reducida */
-}
-
-@keyframes abrirOjo {
-  0% {
-    transform: translateX(-50%) scale(0.7) scaleY(0);
-  }
-  60% {
-    transform: translateX(-50%) scale(0.7) scaleY(1.2);
-  }
-  100% {
-    transform: translateX(-50%) scale(0.7) scaleY(1);
-  }
-}
-
-#luna {
-  width: 280px; /* 400 * 0.7 */
-  opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
-}
-/* Fondo blanco */
-.fade-white {
-  background: #ffffff !important;
-  transition: background 1s ease;
-}
-
-/* --- Estilos generales --- */
-  font-family: "Arial", sans-serif;
-}
-
-/* --- Overlay Intro --- */
-#skip-btn {
-  position: fixed; /* Cambié de absolute a fixed */
-  top: 15px;
-  right: 20px;
-  background: rgba(4, 21, 253, 0.6);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  z-index: 10000; /* Más alto que el overlay */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease, background 0.3s ease;
-}
-
-#skip-btn.show {
-  opacity: 1;
-  pointer-events: all;
-}
-
-#skip-btn:hover {
-  background: rgba(243, 247, 5, 0.8);
-}
-#intro-overlay {
-  position: fixed;
-  inset: 0;
-  background: #111;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Dancing Script", cursive;
-  z-index: 9999;
-  transition: opacity 0.8s ease;
-}
-
-#intro-overlay.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.intro-content {
-  max-width: 900px;
-  padding: 0 24px;
-  text-align: center;
-}
-
-/* --- Líneas de frases --- */
-#intro-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 6px; /* espacio entre frases */
-  margin-bottom: 28px;
-}
-
-.line {
-  margin: 0;
-  font-size: clamp(1.2rem, 4vw, 2rem);
-  line-height: 1.4;
-  white-space: pre-wrap;
-  text-shadow: 2px 2px 4px #000; /* Reborde negro */
-}
-
-#intro-lines .line:last-child {
-  color: yellow;
-  font-size: clamp(1.6rem, 5vw, 2.5rem);
-  font-weight: bold;
-  text-shadow: 2px 2px 5px #000; /* Reborde más marcado */
-}
-
-.line.big {
-  font-size: clamp(2rem, 6vw, 3rem);
-  color: #000;
-  font-weight: 1500;
-  transform: scale(1.2);
-  transition: transform 1s ease, font-size 1s ease, color 1s ease;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.line.final {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  transition: all 1s ease;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.line.final.big {
-  font-size: 8rem;
-  text-shadow: 3px 3px 6px #000; /* Más reborde en la frase final */
-}
-
-/* --- Caracteres animados --- */
-.char {
-  opacity: 0;
-  display: inline-block;
-  transform: translateY(6px);
-  text-shadow: 2px 2px 4px #000;
-}
-
-.char.show {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.18s ease, transform 0.18s ease;
-}
-
-#intro-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 1.4em;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 1s ease, color 0.3s ease;
-  opacity: 0; /* Oculto al inicio */
-  pointer-events: none; /* No clickeable mientras está oculto */
-}
-
-#intro-btn::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-#intro-btn:hover {
-  color: var(--primary-strong);
-}
-
-#intro-btn:hover::after {
-  width: 100%;
-}
-
-/* Clase para mostrar el botón */
-#intro-btn.show {
-  opacity: 1;
-  pointer-events: auto;
-}*/
-/* --- Overlay Video Rifa --- */
+/* --- OVERLAY VIDEO DE INTRODUCCIÓN --- */
 #intro-overlay {
   position: fixed;
   inset: 0;
-  background: #000;
+  /* Cambiado a blanco para que el fondo sea blanco */
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+/* Estilo para ocultar el overlay */
+#intro-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
 #intro-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Esto hará que el video cubra toda la pantalla sin distorsionarse */
+  /* Ocupa todo el espacio manteniendo el aspecto. */
+  object-fit: cover;
 }
 
+/* --- BOTÓN DE SALTAR/ENTRAR --- */
 #skip-btn {
-  /* Posicionamiento y estilos del botón */
   position: fixed;
-  bottom: 20px; /* Cambiado para que esté abajo y centrado */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10000;
+  z-index: 10000; /* Más alto que el overlay */
 
-  /* Estilos visuales acordes a tu diseño */
+  /* Estilos acordes a tus botones */
   background: var(--accent);
   color: var(--white);
   border: none;
@@ -290,595 +75,590 @@ body.fade-out {
 
 #skip-btn:hover {
   background: var(--primary-strong);
-  transform: translateX(-50%) scale(1.05); /* Escala en el hover */
+  transform: translateX(-50%) scale(1.05);
 }
-/* NAV */
+
+/* --- NAV --- */
 .navbar {
-  position: sticky; /* opcional: que quede fija arriba */
-  top: 0; /* si usás sticky */
-  z-index: 1000;
-  height: 80px; /* más alto */
-  padding: 0 2rem; /* más “aire” lateral */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(
-    --white
-  ); /* o var(--page-bg) si querés que sea del mismo color */
-  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 80px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .navbar .logo img {
-  max-height: 180px;
-  width: auto;
+  max-height: 180px;
+  width: auto;
 }
 
 .navbar ul {
-  display: flex;
-  gap: 1.25rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar a {
-  font-size: 1.05rem; /* tipografía un poco más grande */
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-  padding: 0.5rem 0.75rem; /* área “cliqueable” más cómoda */
-  border-radius: 8px;
-  transition: background 0.25s ease, color 0.25s ease;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .navbar a:hover {
-  background: var(--primary);
-  color: var(--accent);
+  background: var(--primary);
+  color: var(--accent);
 }
 
 /* Responsive: el nav se compacta */
 @media (max-width: 900px) {
-  .navbar {
-    height: auto;
-    padding: 0.75rem 1rem;
-    flex-wrap: wrap;
-  }
-  .navbar ul {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
+  .navbar {
+    height: auto;
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+  .navbar ul {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
 }
-/* SLIDER HERO */
+/* --- SLIDER HERO --- */
 .hero {
-  display: flex;
-  height: 400px;
-  overflow: hidden;
-  background: #eaf6ea;
+  display: flex;
+  height: 400px;
+  overflow: hidden;
+  background: #eaf6ea;
 }
 
 .hero-left {
-  flex: 0 0 30%; /* 30% del ancho */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #eaf6ea; /* Fondo para resaltar logo */
-  padding: 20px;
+  flex: 0 0 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf6ea;
+  padding: 20px;
 }
 
 .hero-logo {
-  width: 80%;
-  max-width: 1200px;
-  height: auto;
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
 }
 
 .hero-right {
-  flex: 1; /* 70% del ancho */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Mantiene la imagen completa */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .slide.active {
-  opacity: 1;
+  opacity: 1;
 }
 
 .overlay-text {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 1em;
-  text-align: center;
-  max-width: 90%;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 1em;
+  text-align: center;
+  max-width: 90%;
 }
 
 /* VERSIÓN MÓVIL */
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    height: auto;
-  }
-  .hero-left {
-    display: none;
-  }
-  .hero-right {
-    flex: 1 0 100%;
-    height: auto;
-  }
-  .slider {
-    height: 300px; /* fijar altura para que funcionen las slides absolutas */
-    position: relative;
-  }
-  .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .slide.active {
-    opacity: 1;
-  }
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+  .hero-left {
+    display: none;
+  }
+  .hero-right {
+    flex: 1 0 100%;
+    height: auto;
+  }
+  .slider {
+    height: 300px;
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide.active {
+    opacity: 1;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 /* BOTÓN DONAR EN HERO */
 .hero-btn-container {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 .btn-donar-hero {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  font-size: 1.1em;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.1em;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
-#intro-overlay.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-/* CONTENIDO */
+
+/* --- CONTENIDO --- */
 
 /* SECCIÓN HISTORIA */
-/* SECCIÓN HISTORIA */
 #historia {
-  max-width: 900px; /* Limita el ancho para mejorar la lectura */
-  margin: 40px auto; /* Centra el contenedor pero no el texto */
-  padding: clamp(16px, 4vw, 40px); /* Espaciado interno adaptable */
-  text-align: left; /* Alinea el contenido a la izquierda */
-  background: var(--white); /* Fondo blanco para destacar sobre el bg */
-  border-radius: 12px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 16px var(--shadow); /* Sombra sutil */
+  max-width: 900px;
+  margin: 40px auto;
+  padding: clamp(16px, 4vw, 40px);
+  text-align: left;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
 }
 
 #historia h2 {
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 1em;
-  color: var(--accent);
-  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1em;
+  color: var(--accent);
+  text-align: center;
 }
 
 #historia p {
-  line-height: 1.7; /* Espaciado entre líneas */
-  margin-bottom: 1.5em; /* Separación entre párrafos */
-  font-size: 1.1rem; /* Tamaño de letra cómodo */
-  color: #333333; /* Texto suave */
-  max-width: 700px; /* Limita el ancho del texto */
-  margin-left: 10px; /* Margen interno izquierdo */
-  margin-right: 10px; /* Margen interno derecho */
-  text-align: justify; /* Texto justificado (opcional) */
+  line-height: 1.7;
+  margin-bottom: 1.5em;
+  font-size: 1.1rem;
+  color: #333333;
+  max-width: 700px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: justify;
 }
 
 #historia a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-  transition: color 0.3s ease, border-bottom 0.3s ease,
-    background-color 0.3s ease;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-bottom 0.3s ease,
+    background-color 0.3s ease;
 }
 
 #historia a:hover {
-  color: var(--primary-strong);
-  border-bottom: 2px solid var(--primary-strong);
-  background-color: var(--primary);
-  border-radius: 4px;
-  padding: 2px 4px;
+  color: var(--primary-strong);
+  border-bottom: 2px solid var(--primary-strong);
+  background-color: var(--primary);
+  border-radius: 4px;
+  padding: 2px 4px;
 }
 
 #historia a::after {
-  content: " 🔗";
-  font-size: 0.9em;
-  color: var(--primary-strong);
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  content: " 🔗";
+  font-size: 0.9em;
+  color: var(--primary-strong);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
 #historia a:hover::after {
-  opacity: 1;
+  opacity: 1;
 }
 
 .contenedor {
-  max-width: 980px;
-  margin: auto;
-  padding: 20px;
+  max-width: 980px;
+  margin: auto;
+  padding: 20px;
 }
 
 .section {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  padding: 24px;
-  margin-bottom: 40px;
-  scroll-margin-top: 90px; /* para que el título no quede tapado por el nav */
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  padding: 24px;
+  margin-bottom: 40px;
+  scroll-margin-top: 90px;
 }
 
 .section h2 {
-  margin-top: 0;
-  color: var(--accent);
+  margin-top: 0;
+  color: var(--accent);
 }
 
 /* PROGRESO */
 .progreso-wrap {
-  margin: 20px 0 30px;
+  margin: 20px 0 30px;
 }
 
 .meta-texto {
-  text-align: center;
-  margin-bottom: 10px;
-  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .progreso {
-  background-color: #e0f2e9;
-  border-radius: 25px;
-  overflow: hidden;
-  height: 26px;
+  background-color: #e0f2e9;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 26px;
 }
 
 .barra {
-  height: 100%;
-  width: 0;
-  background: var(--accent);
-  transition: width 1s ease-in-out;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 1s ease-in-out;
 }
 
 /* MÉTODOS DE DONACIÓN */
 
 .métodos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
 }
 
 .card {
-  background: var(--primary);
-  border-radius: 10px;
-  padding: 16px 18px;
-  box-shadow: 0 2px 8px var(--shadow);
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .card h3 {
-  margin-top: 0;
-  color: var(--text);
+  margin-top: 0;
+  color: var(--text);
 }
 
 .agradecimiento {
-  text-align: center;
-  margin-top: 24px;
-  font-weight: bold;
-  color: var(--accent);
+  text-align: center;
+  margin-top: 24px;
+  font-weight: bold;
+  color: var(--accent);
 }
 
 /* LISTA ESTUDIO */
 .estudio-lista {
-  margin: 0 0 16px;
-  padding-left: 18px;
+  margin: 0 0 16px;
+  padding-left: 18px;
 }
 
 /* FOOTER */
 /* Barra vertical inferior derecha */
 .bottom-bar-vertical {
-  position: fixed;
-  right: 20px; /* Cambiamos left por right */
-  bottom: 20px;
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 20px 10px; /* más espacio interno */
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* más separación entre iconos */
-  align-items: center;
-  z-index: 2000;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  z-index: 2000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Ocultar con scroll */
 .bottom-bar-vertical.hide {
-  transform: translateY(150%);
-  opacity: 0;
+  transform: translateY(150%);
+  opacity: 0;
 }
 
 /* Items */
 .bottom-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bottom-icon {
-  height: 68px; /* doble tamaño */
-  width: 68px; /* doble tamaño */
-  object-fit: contain;
-  transition: transform 0.15s ease, filter 0.15s ease;
+  height: 68px;
+  width: 68px;
+  object-fit: contain;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .bottom-icon.logo {
-  height: 84px; /* logo aún más grande */
-  width: auto;
+  height: 84px;
+  width: auto;
 }
 
 .bottom-item:active .bottom-icon,
 .bottom-item:hover .bottom-icon {
-  filter: brightness(0.9);
-  transform: scale(1.1);
+  filter: brightness(0.9);
+  transform: scale(1.1);
 }
 /* Tooltip */
 .bottom-item {
-  position: relative;
+  position: relative;
 }
 
 .tooltip {
-  position: absolute;
-  right: 110%; /* aparece a la izquierda del icono */
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  opacity: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  position: absolute;
+  right: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .bottom-item:hover .tooltip {
-  opacity: 1;
-  transform: translateY(-50%) translateX(-4px);
+  opacity: 1;
+  transform: translateY(-50%) translateX(-4px);
 }
 @media (max-width: 768px) {
-  .bottom-bar-vertical {
-    padding: 10px 6px;
-    gap: 10px;
-  }
+  .bottom-bar-vertical {
+    padding: 10px 6px;
+    gap: 10px;
+  }
 
-  .bottom-icon {
-    height: 40px; /* Tamaño más chico */
-    width: 40px;
-  }
+  .bottom-icon {
+    height: 40px;
+    width: 40px;
+  }
 
-  .tooltip {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
+  .tooltip {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
 }
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 1.7em;
-  }
-  .btn-primary {
-    padding: 10px 20px;
-    font-size: 1em;
-  }
+  .hero h1 {
+    font-size: 1.7em;
+  }
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
 }
 .estudio {
-  background: var(--bg);
-  padding: 2rem;
-  border-radius: 12px;
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 12px;
 }
 
 .estudio h2 {
-  color: var(--accent);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .estudio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card {
-  background: var(--white);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: transform 0.2s ease;
+  background: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s ease;
 }
 .card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block; /* hace que el <a> se comporte como un bloque */
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .card h3 {
-  color: var(--primary-strong);
-  margin-bottom: 0.5rem;
+  color: var(--primary-strong);
+  margin-bottom: 0.5rem;
 }
 
 .doc-box,
 .donar-box {
-  background: var(--primary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 1rem;
-  box-shadow: 0 2px 6px var(--shadow);
+  background: var(--primary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 1rem;
+  box-shadow: 0 2px 6px var(--shadow);
 }
 
 .btn-doc {
-  display: inline-block;
-  margin-top: 0.5rem;
-  background: var(--accent);
-  color: var(--white);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
 .btn-doc:hover {
-  background: var(--primary-strong);
+  background: var(--primary-strong);
 }
 
 .qr-donar {
-  max-width: 150px;
-  margin-top: 1rem;
+  max-width: 150px;
+  margin-top: 1rem;
 }
 .donar-section {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: var(--primary);
-  border-radius: 12px;
-  box-shadow: 0 2px 10px var(--shadow);
-  margin-top: 2rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--primary);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow);
+  margin-top: 2rem;
 }
 
 .donar-section h2 {
-  color: var(--text);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  color: var(--text);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .donar-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn-donar {
-  background: var(--accent);
-  color: var(--white);
-  text-decoration: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 8px var(--shadow);
-  transition: all 0.3s ease;
+  background: var(--accent);
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: all 0.3s ease;
 }
 
 .btn-donar:hover {
-  background: var(--primary-strong);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  background: var(--primary-strong);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .btn-open {
-  background: var(--text);
-  color: var(--white);
+  background: var(--text);
+  color: var(--white);
 }
 
 .btn-open:hover {
-  background: var(--accent);
+  background: var(--accent);
 }
 /*Fucking Footer/*/
 .footer {
-  background-color: #7cc6a4;
-  color: var(--text);
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 -2px 10px var(--shadow);
+  background-color: #7cc6a4;
+  color: var(--text);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 -2px 10px var(--shadow);
 }
 
 .footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .contact-item a {
-  color: var(--text);
-  font-weight: 600;
-  text-decoration: none;
-  margin-left: 5px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 5px;
 }
 
 .contact-item a:hover {
-  color: var(--primary);
-  text-decoration: underline;
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 
