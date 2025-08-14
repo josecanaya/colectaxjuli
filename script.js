@@ -175,19 +175,29 @@ if (barra && recaudadoTexto) {
   }
 
   /*/ 
-const introOverlay = document.getElementById("intro-overlay");
-const skipBtn = document.getElementById("skip-btn");
-const introVideo = document.getElementById("intro-video");
+============================
+     INTRO OVERLAY VIDEO
+  ============================ */
+  const introOverlay = document.getElementById("intro-overlay");
+  const skipBtn = document.getElementById("skip-btn");
+  const introVideo = document.getElementById("intro-video");
 
-const cerrarOverlay = () => {
-  introOverlay.classList.add("hide");
-  setTimeout(() => introOverlay.remove(), 800);
-};
+  // Ajustar la velocidad del video a 0.5
+  if (introVideo) {
+    introVideo.playbackRate = 0.5;
+  }
 
-skipBtn.addEventListener("click", cerrarOverlay);
+  // Función para cerrar el overlay y navegar
+  const cerrarOverlay = () => {
+    introOverlay.classList.add("hide");
+    setTimeout(() => introOverlay.remove(), 800); // Eliminar después de la transición
 
-// Cerrar automáticamente cuando termine el video
-introVideo.addEventListener("ended", cerrarOverlay);
+    // Desplazarse a la sección de la rifa
+    const rifaSection = document.getElementById("rifa");
+    if (rifaSection) {
+      rifaSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 ============================
      NAV ACTIVO SEGÚN SCROLL
   ============================ */
