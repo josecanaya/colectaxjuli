@@ -242,6 +242,15 @@
       document.getElementById("btn-pago-" + cantidad).style.display = "inline-block";
     }, 1000);
   });
+// Cuando hacen clic en cualquier botón de pago
+document.querySelectorAll("#botones-pago a").forEach(btn => {
+  btn.addEventListener("click", function () {
+    // Ocultar los botones de pago
+    document.getElementById("botones-pago").style.display = "none";
+    // Mostrar un mensaje o simplemente dejarlo así
+    alert("Gracias por tu compra. Si querés volver a participar, recargá la página.");
+  });
+});
 </script>
     <!--      <div class="donar-buttons">
           <a href="https://mpago.la/27Cfoww" target="_blank" class="btn-donar">$1.000</a>
@@ -380,6 +389,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
