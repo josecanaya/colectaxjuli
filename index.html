@@ -34,7 +34,43 @@
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-          <section id="donar" class="donar-section">
+        
+  </header>
+  <!-- HERO-->
+  <header class="hero">
+    <div class="hero-left">
+      <img src="imagen/logo.png" alt="Logo Julio" class="hero-logo">
+    </div>
+    <div class="hero-right">
+      <div class="slider">
+        <div class="slide active" data-text="">
+          <img src="imagen/foto1.jpg" alt="Foto del niño 1">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto2.jpg" alt="Foto del niño 2">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto3.jpg" alt="Foto del niño 3">
+        </div>
+        <div class="slide active" data-text="">
+          <img src="imagen/foto4.jpg" alt="Foto del niño 1">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto5.jpg" alt="Foto del niño 2">
+        </div>
+        <div class="slide" data-text="">
+          <img src="imagen/foto6.jpg" alt="Foto del niño 3">
+        </div>
+        <div class="overlay-text" id="slider-text"></div>
+      </div>
+      <div class="hero-btn-container">
+        <button onclick="location.href='#donar'" class="btn-donar-hero">¡Donar ahora!</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor">
+      <section id="donar" class="donar-section">
         <h2>¡Colaborá con Julio!</h2>
    
 <!-- COMPRA DE RIFAS -->
@@ -126,41 +162,6 @@ document.querySelectorAll("#botones-pago a").forEach(btn => {
   });
 });
 </script>
-  </header>
-  <!-- HERO-->
-  <header class="hero">
-    <div class="hero-left">
-      <img src="imagen/logo.png" alt="Logo Julio" class="hero-logo">
-    </div>
-    <div class="hero-right">
-      <div class="slider">
-        <div class="slide active" data-text="">
-          <img src="imagen/foto1.jpg" alt="Foto del niño 1">
-        </div>
-        <div class="slide" data-text="">
-          <img src="imagen/foto2.jpg" alt="Foto del niño 2">
-        </div>
-        <div class="slide" data-text="">
-          <img src="imagen/foto3.jpg" alt="Foto del niño 3">
-        </div>
-        <div class="slide active" data-text="">
-          <img src="imagen/foto4.jpg" alt="Foto del niño 1">
-        </div>
-        <div class="slide" data-text="">
-          <img src="imagen/foto5.jpg" alt="Foto del niño 2">
-        </div>
-        <div class="slide" data-text="">
-          <img src="imagen/foto6.jpg" alt="Foto del niño 3">
-        </div>
-        <div class="overlay-text" id="slider-text"></div>
-      </div>
-      <div class="hero-btn-container">
-        <button onclick="location.href='#donar'" class="btn-donar-hero">¡Donar ahora!</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="contenedor">
  <!-- HISTORIA -->
 <section id="historia" class="section">
     <h2>Mi Historia</h2>
@@ -390,6 +391,7 @@ document.querySelectorAll("#botones-pago a").forEach(btn => {
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
