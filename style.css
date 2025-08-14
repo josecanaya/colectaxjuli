@@ -487,7 +487,10 @@ body.fade-out {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
-
+#intro-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
 /* CONTENIDO */
 
 /* SECCIÓN HISTORIA */
@@ -877,6 +880,7 @@ body.fade-out {
   color: var(--primary);
   text-decoration: underline;
 }
+
 
 
 
