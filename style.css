@@ -26,12 +26,13 @@ body {
   color: var(--text);
 }
 
-/* --- OVERLAY VIDEO DE INTRODUCCIÓN --- */
+/* ----------------------------------------------------
+                  INTRO OVERLAY VIDEO
+  ---------------------------------------------------- */
 #intro-overlay {
   position: fixed;
   inset: 0;
-  /* Cambiado a blanco para que el fondo sea blanco */
-  background: var(--white);
+  background: var(--white); /* Fondo blanco */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,7 +40,6 @@ body {
   transition: opacity 0.8s ease;
 }
 
-/* Estilo para ocultar el overlay */
 #intro-overlay.hide {
   opacity: 0;
   pointer-events: none;
@@ -48,19 +48,16 @@ body {
 #intro-video {
   width: 100%;
   height: 100%;
-  /* Ocupa todo el espacio manteniendo el aspecto. */
-  object-fit: cover;
+  object-fit: cover; /* Asegura que el video cubra toda la pantalla */
 }
 
-/* --- BOTÓN DE SALTAR/ENTRAR --- */
 #skip-btn {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10000; /* Más alto que el overlay */
+  z-index: 10000;
 
-  /* Estilos acordes a tus botones */
   background: var(--accent);
   color: var(--white);
   border: none;
@@ -78,7 +75,9 @@ body {
   transform: translateX(-50%) scale(1.05);
 }
 
-/* --- NAV --- */
+/* ----------------------------------------------------
+                   NAVEGACIÓN (NAV)
+  ---------------------------------------------------- */
 .navbar {
   position: sticky;
   top: 0;
@@ -135,7 +134,10 @@ body {
     margin-top: 0.5rem;
   }
 }
-/* --- SLIDER HERO --- */
+
+/* ----------------------------------------------------
+                   SLIDER HERO
+  ---------------------------------------------------- */
 .hero {
   display: flex;
   height: 400px;
@@ -212,7 +214,7 @@ body {
   max-width: 90%;
 }
 
-/* VERSIÓN MÓVIL */
+/* Versión móvil */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -251,28 +253,28 @@ body {
   }
 }
 
-/* BOTÓN DONAR EN HERO */
-.hero-btn-container {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+/* ----------------------------------------------------
+                   CONTENIDO GENERAL
+  ---------------------------------------------------- */
+.contenedor {
+  max-width: 980px;
+  margin: auto;
+  padding: 20px;
 }
 
-.btn-donar-hero {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  font-size: 1.1em;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+.section {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  padding: 24px;
+  margin-bottom: 40px;
+  scroll-margin-top: 90px;
 }
 
-/* --- CONTENIDO --- */
+.section h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
 
 /* SECCIÓN HISTORIA */
 #historia {
@@ -299,8 +301,8 @@ body {
   font-size: 1.1rem;
   color: #333333;
   max-width: 700px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: justify;
 }
 
@@ -310,8 +312,7 @@ body {
   font-weight: 600;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
-  transition: color 0.3s ease, border-bottom 0.3s ease,
-    background-color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease, background-color 0.3s ease;
 }
 
 #historia a:hover {
@@ -332,26 +333,6 @@ body {
 
 #historia a:hover::after {
   opacity: 1;
-}
-
-.contenedor {
-  max-width: 980px;
-  margin: auto;
-  padding: 20px;
-}
-
-.section {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  padding: 24px;
-  margin-bottom: 40px;
-  scroll-margin-top: 90px;
-}
-
-.section h2 {
-  margin-top: 0;
-  color: var(--accent);
 }
 
 /* PROGRESO */
@@ -380,7 +361,6 @@ body {
 }
 
 /* MÉTODOS DE DONACIÓN */
-
 .métodos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -393,6 +373,7 @@ body {
   border-radius: 10px;
   padding: 16px 18px;
   box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s ease;
 }
 
 .card h3 {
@@ -413,106 +394,6 @@ body {
   padding-left: 18px;
 }
 
-/* FOOTER */
-/* Barra vertical inferior derecha */
-.bottom-bar-vertical {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  z-index: 2000;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Ocultar con scroll */
-.bottom-bar-vertical.hide {
-  transform: translateY(150%);
-  opacity: 0;
-}
-
-/* Items */
-.bottom-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bottom-icon {
-  height: 68px;
-  width: 68px;
-  object-fit: contain;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-
-.bottom-icon.logo {
-  height: 84px;
-  width: auto;
-}
-
-.bottom-item:active .bottom-icon,
-.bottom-item:hover .bottom-icon {
-  filter: brightness(0.9);
-  transform: scale(1.1);
-}
-/* Tooltip */
-.bottom-item {
-  position: relative;
-}
-
-.tooltip {
-  position: absolute;
-  right: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  opacity: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.bottom-item:hover .tooltip {
-  opacity: 1;
-  transform: translateY(-50%) translateX(-4px);
-}
-@media (max-width: 768px) {
-  .bottom-bar-vertical {
-    padding: 10px 6px;
-    gap: 10px;
-  }
-
-  .bottom-icon {
-    height: 40px;
-    width: 40px;
-  }
-
-  .tooltip {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 1.7em;
-  }
-  .btn-primary {
-    padding: 10px 20px;
-    font-size: 1em;
-  }
-}
 .estudio {
   background: var(--bg);
   padding: 2rem;
@@ -540,6 +421,7 @@ body {
   box-shadow: 0 2px 8px var(--shadow);
   transition: transform 0.2s ease;
 }
+
 .card-link {
   text-decoration: none;
   color: inherit;
@@ -585,6 +467,7 @@ body {
   max-width: 150px;
   margin-top: 1rem;
 }
+
 .donar-section {
   text-align: center;
   padding: 2rem 1rem;
@@ -633,7 +516,107 @@ body {
 .btn-open:hover {
   background: var(--accent);
 }
-/*Fucking Footer/*/
+
+/* ----------------------------------------------------
+                 BARRA VERTICAL INFERIOR
+  ---------------------------------------------------- */
+.bottom-bar-vertical {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  z-index: 2000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bottom-bar-vertical.hide {
+  transform: translateY(150%);
+  opacity: 0;
+}
+
+.bottom-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-icon {
+  height: 68px;
+  width: 68px;
+  object-fit: contain;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.bottom-icon.logo {
+  height: 84px;
+  width: auto;
+}
+
+.bottom-item:active .bottom-icon,
+.bottom-item:hover .bottom-icon {
+  filter: brightness(0.9);
+  transform: scale(1.1);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  right: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bottom-item:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+@media (max-width: 768px) {
+  .bottom-bar-vertical {
+    padding: 10px 6px;
+    gap: 10px;
+  }
+  .bottom-icon {
+    height: 40px;
+    width: 40px;
+  }
+  .tooltip {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.7em;
+  }
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+/* ----------------------------------------------------
+                   FOOTER
+  ---------------------------------------------------- */
 .footer {
   background-color: #7cc6a4;
   color: var(--text);
@@ -660,7 +643,6 @@ body {
   color: var(--primary);
   text-decoration: underline;
 }
-
 
 
 
