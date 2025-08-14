@@ -175,29 +175,43 @@ if (barra && recaudadoTexto) {
   }
 
   /*/ 
-============================
-     INTRO OVERLAY VIDEO
+/* ============================
+    INTRO OVERLAY VIDEO
   ============================ */
-  const introOverlay = document.getElementById("intro-overlay");
-  const skipBtn = document.getElementById("skip-btn");
-  const introVideo = document.getElementById("intro-video");
+const introOverlay = document.getElementById("intro-overlay");
+const skipBtn = document.getElementById("skip-btn");
+const introVideo = document.getElementById("intro-video");
 
-  // Ajustar la velocidad del video a 0.5
-  if (introVideo) {
-    introVideo.playbackRate = 0.5;
+// Ajustar la velocidad del video a 0.5
+if (introVideo) {
+  introVideo.playbackRate = 0.5;
+}
+
+const cerrarOverlay = () => {
+  // Ocultar el overlay con una transición suave
+  introOverlay.classList.add("hide");
+
+  // Esperar a que la transición termine y luego eliminar el elemento
+  setTimeout(() => {
+    introOverlay.remove();
+  }, 800); // 800ms es el tiempo de la transición en tu CSS
+
+  // Desplazarse a la sección de la rifa después de cerrar
+  const rifaSection = document.getElementById("rifa-solidaria");
+  if (rifaSection) {
+    rifaSection.scrollIntoView({ behavior: "smooth" });
   }
+};
 
-  // Función para cerrar el overlay y navegar
-  const cerrarOverlay = () => {
-    introOverlay.classList.add("hide");
-    setTimeout(() => introOverlay.remove(), 800); // Eliminar después de la transición
+// Asignar el evento click al botón para cerrar el overlay
+if (skipBtn) {
+  skipBtn.addEventListener("click", cerrarOverlay);
+}
 
-    // Desplazarse a la sección de la rifa
-    const rifaSection = document.getElementById("rifa");
-    if (rifaSection) {
-      rifaSection.scrollIntoView({ behavior: "smooth" });
-    }
-  }
+// Opcional: cerrar automáticamente cuando el video termine
+if (introVideo) {
+  introVideo.addEventListener("ended", cerrarOverlay);
+}
 ============================
      NAV ACTIVO SEGÚN SCROLL
   ============================ */
