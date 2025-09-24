@@ -154,16 +154,28 @@
  
 
 
- 
-      <div class="progreso-wrap">
-        <p class="meta-texto">
-          Meta: 50.000 U$D  — Recaudado: <span id="recaudado">$0</span>
-        </p>
-        <div class="progreso">
-          <div class="barra" id="barra"></div>
-        </div>
-      </div>
+ <div class="progreso-wrap">
+  <p class="meta-texto">
+    Meta: 50.000 U$D — Recaudado: <span id="recaudado">$0</span>
+  </p>
+  <div class="progreso">
+    <div class="barra" id="barra-recaudado"></div>
+  </div>
 
+  <p class="meta-texto">
+    Usado: <span id="usado">$0</span> de <span id="recaudado-total">$0</span>
+  </p>
+  <div class="progreso">
+    <div class="barra" id="barra-usado"></div>
+  </div>
+
+  <p class="meta-texto">
+    Disponible: <span id="disponible">$0</span> de <span id="recaudado-total2">$0</span>
+  </p>
+  <div class="progreso">
+    <div class="barra" id="barra-disponible"></div>
+  </div>
+</div>
     
 
     <div class="métodos">
@@ -284,6 +296,7 @@
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
