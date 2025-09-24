@@ -4,27 +4,50 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================
      CONFIG & BARRA DE PROGRESO
   ============================ */
-const META = 36_000;
-let recaudado = 7582.35;
+const META = 40000;
+const RECAUDADO = 19000;
+const USADO = 6300;
+const DISPONIBLE = RECAUDADO - USADO; // 12700
 
-const barra = document.getElementById("barra");
+// Elementos
+const barraRecaudado = document.getElementById("barra-recaudado");
+const barraUsado = document.getElementById("barra-usado");
+const barraDisponible = document.getElementById("barra-disponible");
+
 const recaudadoTexto = document.getElementById("recaudado");
+const usadoTexto = document.getElementById("usado");
+const disponibleTexto = document.getElementById("disponible");
 
-if (barra && recaudadoTexto) {
-  const actualizarBarra = () => {
-    const porcentaje = Math.min((recaudado / META) * 100, 100);
-    barra.style.width = porcentaje + "%";
+const recaudadoTotalTexto = document.getElementById("recaudado-total");
+const recaudadoTotalTexto2 = document.getElementById("recaudado-total2");
 
-    // Formatear el número con separadores de miles y agregar USD al final
-    recaudadoTexto.textContent = recaudado.toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }) + " U$D";
-  };
-
-  actualizarBarra();
+function formatUSD(num) {
+  return num.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }) + " U$D";
 }
-  
+
+function actualizarBarras() {
+  // Recaudado vs Meta
+  const porcentajeRecaudado = Math.min((RECAUDADO / META) * 100, 100);
+  barraRecaudado.style.width = porcentajeRecaudado + "%";
+  recaudadoTexto.textContent = formatUSD(RECAUDADO);
+
+  // Usado vs Recaudado
+  const porcentajeUsado = Math.min((USADO / RECAUDADO) * 100, 100);
+  barraUsado.style.width = porcentajeUsado + "%";
+  usadoTexto.textContent = formatUSD(USADO);
+  recaudadoTotalTexto.textContent = formatUSD(RECAUDADO);
+
+  // Disponible vs Recaudado
+  const porcentajeDisponible = Math.min((DISPONIBLE / RECAUDADO) * 100, 100);
+  barraDisponible.style.width = porcentajeDisponible + "%";
+  disponibleTexto.textContent = formatUSD(DISPONIBLE);
+  recaudadoTotalTexto2.textContent = formatUSD(RECAUDADO);
+}
+
+actualizarBarras();
   /* ============================
      SLIDER DE HERO
   ============================ */
