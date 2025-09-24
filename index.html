@@ -70,98 +70,7 @@
   </header>
 
   <main class="contenedor">
-      <section id="donar" class="donar-section">
-        <h2>¡Colaborá con Julio!</h2>
-   
-<!-- COMPRA DE RIFAS -->
-<section id="rifa" class="section" style="margin-top: 40px;">
-  <h2>GRAN RIFA SOLIDARIA</h2>
-<!-- Imagen arriba del formulario -->
-  <img src="imagen/rifa.jpg" alt="Imagen de la rifa solidaria" style="max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px;">
-  <p>Completá tus datos y elegí la cantidad de rifas. Después del pago te asignaremos los números disponibles y te los enviaremos por WhatsApp.</p>
-  <!-- Formulario enviando directamente a Google Sheets -->
-  <form id="rifa-form" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px;" action="https://script.google.com/macros/s/AKfycbxOjvrT4Y1AdrGh0NjLVqjGGGFjcEzxoWA9pO5Fuylxz9tnafHXiITboSZL1VL23_mhKQ/exec" method="POST" target="hidden_iframe">
-    <label>
-      Nombre y Apellido:
-      <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 8px;">
-    </label>
-    <label>
-      Teléfono / WhatsApp:
-      <input type="tel" name="telefono" required placeholder="Ej: 3415555555" maxlength="10" pattern="\d{10}" title="Ingrese 10 dígitos numéricos" style="width: 100%; padding: 8px;">
-    </label>
-    <label>
-      Medio de contacto preferido:
-      <select name="contacto" required style="width: 100%; padding: 8px;">
-        <option value="">-- Seleccionar --</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Llamada">Llamada</option>
-      </select>
-    </label>
-    <label>
-      Cantidad de rifas:
-      <select name="cantidad" id="cantidad-rifas" required style="width: 100%; padding: 8px;">
-        <option value="">-- Seleccionar --</option>
-        <option value="1">1 rifa</option>
-        <option value="3">3 rifas</option>
-        <option value="6">6 rifas</option>
-        <option value="15">15 rifas</option>
-      </select>
-    </label>
-    <!-- Botones de pago -->
-    <div id="botones-pago" style="display: none; flex-direction: column; gap: 10px; margin-top: 10px;">
-      <a id="btn-pago-1" href="https://mpago.la/12JmEKX" target="_blank" class="btn-donar">Pagar 1 Rifa</a>
-      <a id="btn-pago-3" href="https://mpago.la/2QcwZCd" target="_blank" class="btn-donar">Pagar 3 Rifas</a>
-      <a id="btn-pago-6" href="https://mpago.la/1xaDPFJ" target="_blank" class="btn-donar">Pagar 6 Rifas</a>
-      <a id="btn-pago-15" href="https://mpago.la/2xTRsK6" target="_blank" class="btn-donar">Pagar 15 Rifas</a>
-    </div>
-    <button id="btn-guardar" type="submit" style="margin-top: 10px;" class="btn-donar">Guardar Datos</button>
-  </form>
-  <!-- iframe oculto para evitar recargar la página -->
-  <iframe name="hidden_iframe" style="display: none;"></iframe>
-</section>
 
-<script>
-  // Mostrar botón de pago según cantidad elegida
-  document.getElementById("cantidad-rifas").addEventListener("change", function() {
-    const pagoDiv = document.getElementById("botones-pago");
-    const btns = {
-      "1": document.getElementById("btn-pago-1"),
-      "3": document.getElementById("btn-pago-3"),
-      "6": document.getElementById("btn-pago-6"),
-      "15": document.getElementById("btn-pago-15")
-    };
-    // Ocultar todos los botones
-    Object.values(btns).forEach(btn => btn.style.display = "none");
-    if (this.value && btns[this.value]) {
-      // Botones de pago se mostrarán solo después de guardar
-      Object.values(btns).forEach(btn => btn.dataset.showAfterSave = "true");
-    }
-  });
-
-  // Cuando el formulario se envía
-  document.getElementById("rifa-form").addEventListener("submit", function() {
-    const btnGuardar = document.getElementById("btn-guardar");
-    const pagoDiv = document.getElementById("botones-pago");
-    const cantidad = document.getElementById("cantidad-rifas").value;
-    // Esperar un poco para asegurar que Google Sheets procese el envío
-    setTimeout(() => {
-      btnGuardar.style.display = "none"; // Ocultar guardar
-      pagoDiv.style.display = "flex"; // Mostrar botones de pago
-      // Mostrar solo el botón correspondiente
-      document.querySelectorAll("#botones-pago a").forEach(a => a.style.display = "none");
-      document.getElementById("btn-pago-" + cantidad).style.display = "inline-block";
-    }, 1000);
-  });
-// Cuando hacen clic en cualquier botón de pago
-document.querySelectorAll("#botones-pago a").forEach(btn => {
-  btn.addEventListener("click", function () {
-    // Ocultar los botones de pago
-    document.getElementById("botones-pago").style.display = "none";
-    // Mostrar un mensaje o simplemente dejarlo así
-    alert("Gracias por tu compra. Si querés volver a participar, recargá la página.");
-  });
-});
-</script>
  <!-- HISTORIA -->
 <section id="historia" class="section">
     <h2>Mi Historia</h2>
@@ -391,6 +300,7 @@ document.querySelectorAll("#botones-pago a").forEach(btn => {
 <script src="crypto.js"></script>
 </body>
 </html>
+
 
 
 
